@@ -1,23 +1,21 @@
 import { useState, useEffect } from 'react';
 import API_ENDPOINTS from '../config/apiConfig';
 
-function useFetch<T>(endpointKey: keyof typeof API_ENDPOINTS) {
-  const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+const useFetch = (endpointKey) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const url = API_ENDPOINTS[endpointKey];
-
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
+        const response = await fetch(API_ENDPOINTS[endpointKey]);
         if (!response.ok) throw new Error(`Error: ${response.statusText}`);
 
-        const result: T = await response.json();
+        const result = await response.json();
         setData(result);
       } catch (err) {
-        setError((err as Error).message);
+        setError(err.message);
       } finally {
         setLoading(false);
       }
@@ -27,6 +25,6 @@ function useFetch<T>(endpointKey: keyof typeof API_ENDPOINTS) {
   }, [endpointKey]);
 
   return { data, loading, error };
-}
+};
 
 export default useFetch;
