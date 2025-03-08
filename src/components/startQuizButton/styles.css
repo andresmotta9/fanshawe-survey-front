@@ -1,8 +1,7 @@
 .startQuizButton{
     background-color: #BC3D3D;
-    width: calc(100% - 32px); 
-    margin: 0px 16px 10px 16px;
-    height: 60px;
+    width: 157px;
+    height: 48px;
     border-radius: 10px;
     color: white;
     box-shadow: 0px 6px 0px 0px rgba(0, 0, 0, 1);
@@ -29,17 +28,4 @@
     box-shadow: 0px 8px 0px 0px rgba(0, 0, 0, 1);
     cursor: pointer;
 }
-
-@media (min-width: 1024px) {
-    .startQuizButton{
-        background-color: #BC3D3D;
-        width: 157px;
-        height: 48px;
-        border-radius: 10px;
-        color: white;
-        box-shadow: 0px 6px 0px 0px rgba(0, 0, 0, 1);
-        border: 2px solid black;
-        font-family: inter;
-    }
-  }
 
