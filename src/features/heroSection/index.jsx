@@ -10,7 +10,7 @@ export default function HeroSection(props) {
                 Not Sure Which IT Program Fits You? <br/> <span className="styledHeader"> Let's Find Out! </span>
             </div>
             <div className="heroDescription">
-                Discover the best IT diploma program at Fanshawe College based on your skills, interests, and career goals. Take our quick Quiz and get personalized recommendations!
+                Discover the best IT diploma program at Fanshawe College based on your skills, interests, provisions, and career goals. Take our quick Quiz and get personalized recommendations!
             </div>
             <div className="buttonContainer">
                 <SecondaryButton name="view Courses"/>
