@@ -1,7 +1,8 @@
 import React from "react"
 import './styles.css'
-import StartQuizButton from '../../components/startQuizButton'
 import SecondaryButton from "../../components/secondaryButton"
+import PrimaryQuizButton from "../../components/primaryQuizButton"
+import TestimonialAvatar from "../../components/testimonialAvatars"
 
 export default function HeroSection(props) {
     return(
@@ -14,7 +15,21 @@ export default function HeroSection(props) {
             </div>
             <div className="buttonContainer">
                 <SecondaryButton name="view Courses"/>
-                <StartQuizButton />   
+                <PrimaryQuizButton name="start Quiz"/>   
+            </div>
+            <div className="Testimonials">
+                <div className="TestimonialAvatarContainer">
+                    <TestimonialAvatar />
+                    <TestimonialAvatar />
+                    <TestimonialAvatar />
+                    
+                </div>
+                <div>
+                    <div className="testimonialText">
+                        <h4>20+</h4>
+                        <p>Students Assisted</p>
+                    </div>
+                </div>
             </div>
         </div>
     )

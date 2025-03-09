@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles.css'
-import StartQuizButton from '../../components/startQuizButton'
+import PrimaryQuizButton from '../../components/primaryQuizButton'
 import { useMediaQuery } from 'react-responsive'
 
 
@@ -14,7 +14,7 @@ export default function HeaderSection({props}) {
     return (
         <div className='headerSection'>
             <div className='logo'>FanSurvey</div>
-            <div><StartQuizButton mobileHeader= {!isDesktop}/></div>
+            <div><PrimaryQuizButton mobileHeader= {!isDesktop} name="start Quiz"/></div>
         </div>
     )
 }

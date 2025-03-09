@@ -10,10 +10,10 @@ function MobileHeader() {
 }
 
 
-export default function StartQuizButton(props) {
+export default function PrimaryQuizButton(props) {
     return (
         <div>
-            {(props.mobileHeader == true) ? <MobileHeader/> : <button className='startQuizButton'>Start Quiz</button>}
+            {(props.mobileHeader == true) ? <MobileHeader/> : <button className='startQuizButton'>{props.name}</button>}
         </div>
     )
 }

@@ -6,7 +6,7 @@
     font-family: inter;
     font-weight: 700;
     text-align: center;
-    width: 352px;
+    width: 300px;
     line-height: 101.2%;
     margin: auto;
     margin-top: 30px;
@@ -37,6 +37,37 @@
     font-size: 20px;
 
 }
+.TestimonialAvatarContainer{
+    display: flex;
+    margin: 10px 0px;
+}
+
+.Testimonials{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.testimonialText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.testimonialText h4{
+    font-size: 32px;
+    font-weight: 700;
+    
+
+    
+}
+.testimonialText p{
+    width: 70px;
+    font-size: 15px;
+    line-height: 99%;
+    margin-left: 10px;
+}
+
 
 /* desktop view */
 @media (min-width: 1024px) {
