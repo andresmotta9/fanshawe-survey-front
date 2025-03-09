@@ -1,0 +1,20 @@
+.headerSection{
+    display: flex;
+    justify-content: space-between;
+    margin: 28px 16px 0px 16px;
+}
+
+.logo{
+    font-size: 32px;
+    font-weight: 900;
+    color: #BC3D3D;
+}
+
+/* desktop view */
+
+
+@media (min-width: 1024px) {
+    .headerSection {
+        margin: 55px 100px 0px 100px;
+    }
+  }

@@ -1,0 +1,58 @@
+.heroSection{
+    color: black;
+}
+.headerText{
+    font-size: 48px;
+    font-family: inter;
+    font-weight: 700;
+    text-align: center;
+    width: 352px;
+    line-height: 101.2%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.styledHeader{
+    font-weight: 200;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+
+}
+.heroDescription{
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 16px 0px 16px;
+    margin-bottom: 16px;
+    margin: auto;
+    width: 312px;
+    line-height: 101.2%;
+    
+
+}
+.buttonContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+    font-size: 20px;
+
+}
+
+/* desktop view */
+@media (min-width: 1024px) {
+    .headerText {
+        font-size: 64px;
+        width: 892px;
+        margin-top: 100px;
+    }
+    .heroDescription{
+        width: 735px;
+    
+    }
+    .buttonContainer{
+        display: flex;
+        margin: auto;
+        flex-direction: row;
+        margin-top: 40px;
+    }
+  }
