@@ -1,0 +1,37 @@
+.coursesSection{
+    background-color: #BC3D3D;
+    height: 70vh;
+    margin-top: 50px;
+}
+.bindTopCircles{
+    display: flex;
+    justify-content: space-around;
+}
+.bindHoles{
+    background-color: white;
+    border-radius: 50%;
+    margin-top: -25px;
+    width: 50px;
+    height: 50px;
+}
+.courseCardContainer{
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+}
+
+
+/* desktop version */
+
+@media (min-width: 1024px) {
+    .coursesSection{
+        height: 70vh;
+        margin: 50px 40px;
+    }
+    .coursesSectionContent{
+        margin: 30px;
+    }
+    
+}
+
