@@ -1,30 +1,55 @@
-import CourseCards from "../../components/courseCard"
-import "./styles.css"
-import { useMediaQuery } from 'react-responsive'
+import CourseCards from "../../components/courseCard";
+import "./styles.css";
+import { useMediaQuery } from "react-responsive";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import courseInfo from "../../data/courseInfo";
 
 
-export default function CoursesSection(){
+export default function CoursesSection() {
+  let [activeCard, setActiveCard] = useState(null);
+  const isDesktop = useMediaQuery({ minWidth: 750 });
 
-    const isDesktop = useMediaQuery({minWidth: 750})
-    return(
-        <div className="coursesSection">
-            <div className="bindTopCircles">
-                {Array(isDesktop ? 14 : 5).fill().map((_,i) => (
-                    <div className="bindHoles" key={i}></div>
-                ))}
-            </div>
-            <div className="coursesSectionContent">
-                <div className="TextHeading">COURSES AVAILABLE</div>
-                <div className="courseCardContainer">
-                    <CourseCards />
-                    <CourseCards />
-                    <CourseCards />
-                    <CourseCards />
-                    <CourseCards />
-                    <CourseCards />
-                    <CourseCards />
-                </div>
-            </div>
+  function handleCardClick(index) {
+    activeCard === index ? setActiveCard(null) : setActiveCard(index);
+    console.log(activeCard);
+  }
+  return (
+    <div className="coursesSection">
+      <div className="bindTopCircles">
+        {Array(isDesktop ? 14 : 5)
+          .fill()
+          .map((_, i) => (
+            <div className="bindHoles" key={i}></div>
+          ))}
+      </div>
+      <div className="coursesSectionContent">
+        <div className="TextHeading">COURSES AVAILABLE</div>
+        <div className="courseCardContainer">
+          {courseInfo.map((courses, i) => (
+            <CourseCards
+              courseTitle={courses.title}
+              courseName={courses.name}
+              cardButtonClicked={activeCard === i}
+              key={i}
+              onClick={() => handleCardClick(i)}
+            />
+          ))}
         </div>
-    )
+        { activeCard !== null ?
+        <motion.div className="courseFullDetails"
+        
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}>
+          <div className="heading">
+            <div className="courseFullDetailsTitle">{courseInfo[activeCard].title}</div>
+            <div className="courseFullDetailsName">{courseInfo[activeCard].name}</div>
+          </div>
+          <div className="courseFullDetailsDescription">{courseInfo[activeCard].description}</div>
+        </motion.div> : null
+        }
+      </div>
+    </div>
+  );
 }

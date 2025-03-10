@@ -3,8 +3,9 @@ import { motion, transform } from "framer-motion";
 import { useState } from "react";
 import { FaArrowRight,FaArrowDown } from "react-icons/fa";
 
-export default function CourseCards(props) {
-  let [cardButtonClicked, setCardButtonClicked] = useState(false);
+
+export default function CourseCards({courseTitle,courseName,cardButtonClicked,onClick}) {
+  
   return (
     <motion.div
       className="courseCard"
@@ -18,15 +19,14 @@ export default function CourseCards(props) {
     >
       <div className="courseImage"></div>
       <div className="courseDescription">
-        <div className="courseTitle">IWD24-23</div>
+        <div className="courseTitle">{courseTitle}</div>
         <div className="courseDetails">
           <div className="courseName">
-            {" "}
-            Internet Applications and Web Development
+            {courseName}
           </div>
           <div
             className="courseButton"
-            onClick={() => setCardButtonClicked(!cardButtonClicked)}
+            onClick={onClick}
           >
             { cardButtonClicked ? <FaArrowRight /> : <FaArrowDown />}
           </div>
