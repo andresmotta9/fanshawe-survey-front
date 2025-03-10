@@ -2,6 +2,7 @@ import CourseCards from "../../components/courseCard"
 import "./styles.css"
 import { useMediaQuery } from 'react-responsive'
 
+
 export default function CoursesSection(){
 
     const isDesktop = useMediaQuery({minWidth: 750})

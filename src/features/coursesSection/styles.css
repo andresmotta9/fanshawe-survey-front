@@ -18,7 +18,21 @@
     display: flex;
     overflow-x: auto;
     scrollbar-width: none;
+    padding-bottom: 50px;
 
+}
+.coursesSectionContent{
+    margin: 16px;
+}
+.TextHeading{
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+    width: 207px;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 40px;
+    line-height: 120%;
 }
 
 
@@ -31,6 +45,9 @@
     }
     .coursesSectionContent{
         margin: 30px;
+    }
+    .TextHeading{
+        width: 400px;
     }
     
 }
