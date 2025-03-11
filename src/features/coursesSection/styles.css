@@ -93,6 +93,7 @@
     column-count: 2;
     column-gap: 30px;
     column-fill: auto;
+    max-height: 60vh;
   }
   .courseFullDetails .courseFullDetailsDescription{
     font-size: 20px;
