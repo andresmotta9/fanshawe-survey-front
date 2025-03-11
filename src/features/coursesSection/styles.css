@@ -35,7 +35,7 @@
   line-height: 120%;
 }
 .courseFullDetails {
-  height: 60vh;
+  height: max-content;
   background-color: #e4f8ff;
   color: black;
   border: 2px solid black;
@@ -48,13 +48,33 @@
 }
 .courseFullDetails .heading .courseFullDetailsName {
   line-height: 99%;
-  width: 314px;
   font-size: 32px;
 }
 .courseFullDetails .courseFullDetailsDescription {
   font: 16px;
   margin-top: 20px;
 }
+.topSkills{
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: fit-content;
+    margin-bottom: 10px;
+    
+}
+.courseLink{
+    color: blue;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.courseFullDetails h4{
+    font-weight: 700;
+    margin-top: 30px;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
 
 /* desktop version */
 
@@ -72,5 +92,19 @@
   .courseFullDetails {
     column-count: 2;
     column-gap: 30px;
+    column-fill: auto;
+  }
+  .courseFullDetails .courseFullDetailsDescription{
+    font-size: 20px;
+  }
+  .courseFullDetails .heading .courseFullDetailsName {
+    line-height: 99%;
+    width: 314px;
+    font-size: 32px;
+  }
+  .courseFullDetails h4{
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 50px;
   }
 }
