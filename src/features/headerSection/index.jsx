@@ -13,8 +13,13 @@ export default function HeaderSection({props}) {
 
     return (
         <div className='headerSection'>
-            <div className='logo'>FanSurvey</div>
-            <div><PrimaryQuizButton mobileHeader= {!isDesktop} name="start Quiz"/></div>
+            <div className='logo'>
+                <span onClick={() => window.location.reload()} style={{ cursor: 'pointer' }}>
+                    FanSurvey
+                </span>
+            </div>
+            <div><PrimaryQuizButton mobileHeader={!isDesktop} name="Start Quiz" /></div>
         </div>
-    )
+    );
+    
 }
