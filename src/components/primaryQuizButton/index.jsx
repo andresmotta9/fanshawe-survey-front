@@ -13,7 +13,7 @@ function MobileHeader() {
 export default function PrimaryQuizButton(props) {
     return (
         <div>
-            {(props.mobileHeader == true) ? <MobileHeader/> : <button className='startQuizButton'>{props.name}</button>}
+            {(props.mobileHeader === true) ? <MobileHeader/> : <button className='startQuizButton'>{props.name}</button>}
         </div>
     )
 }
