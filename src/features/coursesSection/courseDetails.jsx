@@ -12,10 +12,12 @@ export default function CourseDetails({ activeCard }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="heading">
+      <motion.div className="heading"
+        onChange={() => console.log("changed")}
+      >
         <div className="courseFullDetailsTitle">{course.title}</div>
         <div className="courseFullDetailsName">{course.name}</div>
-      </div>
+      </motion.div>
       <div className="courseFullDetailsDescription">{course.description}</div>
       <div>
         <h4>Top Skills</h4>
