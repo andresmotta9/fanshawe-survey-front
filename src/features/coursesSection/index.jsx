@@ -12,7 +12,7 @@ export default function CoursesSection() {
 
   function handleCardClick(index) {
     activeCard === index ? setActiveCard(null) : setActiveCard(index);
-    console.log(activeCard);
+    
   }
   return (
     <div className="coursesSection">
