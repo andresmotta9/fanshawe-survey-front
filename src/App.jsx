@@ -12,7 +12,6 @@ function App() {
       <HeaderSection />
       <HeroSection />
       <CoursesSection />
-      <BannerSection />
     </div>
       
   );
