@@ -4,6 +4,7 @@ import HeaderSection from './features/headerSection';
 import HeroSection from './features/heroSection';
 import CoursesSection from './features/coursesSection';
 import FooterSection from './features/footerSection';
+import BannerSection from './features/bannerSection';
 
 function App() {
   const { data: users, loading, error } = useFetch('USERS');

@@ -1,8 +1,8 @@
 .bannerSection{
     padding: 16px;
-    background-color: yellow;
     display: flex;
     flex-direction: column;
+    perspective: 1000px;
     
 }
 
@@ -13,6 +13,7 @@
     flex-direction: column;
     background-color: #E3F7FF;
     border: 2px solid black;
+    border-radius: 15px;
 }
 
 .bannerSectionImage{
@@ -26,7 +27,6 @@
     align-items: center;
     padding: 0px 5px;
     width: 100%;
-    background-color: blue;
 
 }
 .holes{
@@ -39,7 +39,7 @@
 .spiralBind{
     display: flex;
     justify-content: center;
-    gap: 22.25%;
+    gap: 22.15%;
     align-items: center;
     width: 100%;
     margin-top: -18px;
@@ -53,15 +53,33 @@
     border-radius: 10px;
 }
 .bannerSection__content{
+
+    transform-origin: top;
     margin-top: -20px;
     height: 260px;
     width: 100%;
-    background-color: E3F7FF;
     border: 2px solid black;
     border-radius: 15px;
-    background-color: orange;
+    background-color: #B2EBFF;
+    box-shadow: 0px 7px 0px 0px rgba(0, 0, 0, 1);
 }
 .bannerSectionLowerContent{
     height: 80%;
-    background-color: yellow;
+    background-color: transparent;
+    padding: 0px 10px;
+    
+}
+.bannerSectionLowerContent p, .bannerSectionLowerContent h4{
+    margin: 10px 16px;
+    color: black;
+}
+.bannerSectionLowerContent p{
+    
+    font-weight: 300;
+    line-height: 99%;
+}
+.bannerSectionLowerContent h4{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 99%;
 }

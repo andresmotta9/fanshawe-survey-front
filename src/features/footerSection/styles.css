@@ -1,8 +1,8 @@
 .footer {
-    background-color: #a42d2d;
+    background-color: #BC3D3D;
     color: white;
     padding: 2rem 0;
-    font-family: "Arial", sans-serif;
+    font-family: "Inter",sans-serif;
   }
   
   .footer-container {
@@ -17,7 +17,7 @@
   
   /* Logo & Social Icons */
   .footer-logo {
-    text-align: center;
+    text-align: left;
   }
   
   .logo-text {
@@ -30,11 +30,12 @@
     display: flex;
     gap: 10px;
     margin-top: 10px;
+    justify-content: start;
   }
   
   .circle {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     background-color: white;
     border-radius: 50%;
     display: inline-block;
@@ -49,18 +50,22 @@
   .footer-contact,
   .footer-subscribe {
     max-width: 300px;
+    text-align: left;
   }
   
   .footer-contact h4,
   .footer-subscribe h4 {
-    font-size: 1.2rem;
+    font-size: 20px;
     margin-bottom: 10px;
+    font-weight: 700;
   }
   
   .footer-contact p,
   .footer-subscribe p {
-    font-size: 0.9rem;
-    margin-bottom: 8px;
+    font-size: 20px;
+    margin-bottom: 15px;
+    line-height: 99%;
+    font-weight: 300;
   }
   
   .footer-contact a,
@@ -125,8 +130,6 @@
 @media (max-width: 768px) {
     .footer-container {
       flex-direction: column;
-      align-items: center;
-      text-align: center;
       padding: 0 20px;
     }
   
