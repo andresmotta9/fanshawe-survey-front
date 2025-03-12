@@ -12,6 +12,10 @@
     margin-top: 30px;
     margin-bottom: 20px;
 }
+.headerText :hover{
+    color: red;
+    cursor: default;
+}
 .styledHeader{
     font-weight: 200;
     font-family: "Instrument Serif", serif;
