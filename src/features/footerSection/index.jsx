@@ -7,13 +7,19 @@ const Footer = () => {
       <div className="footer-container">
         {/* Logo & Socials */}
         <div className="footer-logo">
-          <span
-            className="logo-text"
-            onClick={() => window.location.reload()}
-            style={{ cursor: "pointer" }}
-          >
-            FanSurvey
-          </span>
+        <span
+  className="logo-text"
+  onClick={() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" }); // Scroll to top
+    setTimeout(() => {
+      window.location.reload(); // Refresh after ensuring scroll
+    }, 700);
+  }}
+  style={{ cursor: "pointer" }}
+>
+  FanSurvey
+</span>
+
           <div className="social-icons">
             <a href="#" className="circle"></a>
             <a href="#" className="circle"></a>
