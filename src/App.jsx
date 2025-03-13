@@ -5,6 +5,7 @@ import HeroSection from './features/heroSection';
 import CoursesSection from './features/coursesSection';
 import FooterSection from './features/footerSection';
 import BannerSection from './features/bannerSection';
+import FAQ from './features/faqSection';
 
 function App() {
   const { data: users, loading, error } = useFetch('USERS');
@@ -14,6 +15,7 @@ function App() {
       <HeroSection />
       <CoursesSection />
       <BannerSection />
+      <FAQ />
       <FooterSection />
     </div>
       
