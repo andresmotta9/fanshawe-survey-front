@@ -24,9 +24,10 @@ export default function CourseDetails({ activeCard }) {
         {course.topSkills.map((skill, i) => (
           <div className="topSkills" key={i}>{skill}</div>
         ))}
-        <a className="courseLink" href={course.link} target="_blank">
-          Link to Fanshawe website <FaArrowRight />
-        </a>
+       <a className="courseLink" href={course.link} target="_blank">
+  Link to Fanshawe website <FaArrowRight className="arrow-icon" />
+</a>
+
       </div>
     </motion.div>
   );
