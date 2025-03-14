@@ -1,86 +1,103 @@
-.bannerSection{
-    padding: 16px;
+.bannerSection {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.bannerSection .bannerSectionImageContainer {
+  height: 260px;
+  width: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  background-color: #e3f7ff;
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+.bannerSectionImage {
+  height: 80%;
+}
+.holesContainer {
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  gap: 20%;
+  align-items: center;
+  padding: 0px 5px;
+  width: 100%;
+}
+.holes {
+  height: 20px;
+  width: 20px;
+  background-color: rgb(255, 255, 255);
+  border: 3px solid black;
+  border-radius: 50%;
+}
+.spiralBind {
+  display: flex;
+  justify-content: center;
+  gap: 22.2%;
+  align-items: center;
+  width: 100%;
+  margin-top: -18px;
+  z-index: 1000;
+}
+.spiralBind__spiral {
+  width: 10px;
+  height: 40px;
+  background-color: black;
+  border-radius: 10px;
+}
+.bannerSection__content {
+  transform-origin: top;
+  margin-top: -20px;
+  height: 260px;
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 15px;
+  background-color: #b2ebff;
+  box-shadow: 0px 7px 0px 0px rgba(0, 0, 0, 1);
+}
+.bannerSectionLowerContent {
+  height: 80%;
+  background-color: transparent;
+  padding: 0px 10px;
+}
+.bannerSectionLowerContent p,
+.bannerSectionLowerContent h4 {
+  margin: 10px 16px;
+  color: black;
+}
+.bannerSectionLowerContent p {
+  font-weight: 300;
+  line-height: 99%;
+}
+.bannerSectionLowerContent h4 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 99%;
+}
+
+/* desktop view */
+
+@media (min-width: 1024px) {
+  .bannerSection {
+    padding: 100px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     perspective: 1000px;
     overflow: hidden;
-    
-}
-
-.bannerSection .bannerSectionImageContainer{
-    height: 260px;
-    width: 100%;
+  }
+  .bannerSection .bannerSectionImageContainer {
+    display: flex;
+    flex-direction: row;
+    background-color: green;
+  }
+  .holesContainer{
     display: flex;
     flex-direction: column;
-    background-color: #E3F7FF;
-    border: 2px solid black;
-    border-radius: 15px;
-}
-
-.bannerSectionImage{
-    height: 80%;
-}
-.holesContainer{
-    height: 15%;
-    display: flex;
-    justify-content: center;
-    gap: 20%;
-    align-items: center;
-    padding: 0px 5px;
-    width: 100%;
-
-}
-.holes{
-    height: 20px;
-    width: 20px;
-    background-color: rgb(255, 255, 255);
-    border: 3px solid black;
-    border-radius: 50%;
-}
-.spiralBind{
-    display: flex;
-    justify-content: center;
-    gap: 22.2%;
-    align-items: center;
-    width: 100%;
-    margin-top: -18px;
-    z-index: 1000;
-
-}
-.spiralBind__spiral{
-    width: 10px;
-    height: 40px;
-    background-color: black;
-    border-radius: 10px;
-}
-.bannerSection__content{
-
-    transform-origin: top;
-    margin-top: -20px;
-    height: 260px;
-    width: 100%;
-    border: 2px solid black;
-    border-radius: 15px;
-    background-color: #B2EBFF;
-    box-shadow: 0px 7px 0px 0px rgba(0, 0, 0, 1);
-}
-.bannerSectionLowerContent{
-    height: 80%;
-    background-color: transparent;
-    padding: 0px 10px;
-    
-}
-.bannerSectionLowerContent p, .bannerSectionLowerContent h4{
-    margin: 10px 16px;
-    color: black;
-}
-.bannerSectionLowerContent p{
-    
-    font-weight: 300;
-    line-height: 99%;
-}
-.bannerSectionLowerContent h4{
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 99%;
+    background-color: yellow;
+  }
 }

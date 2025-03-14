@@ -7,7 +7,7 @@ export default function BannerSection() {
     return (
         <div className="bannerSection">
             <div className="bannerSectionImageContainer">
-                <div className="bannerSectionImage"></div>s
+                <div className="bannerSectionImage"></div>
                 <div className="holesContainer bottom">
                     <div className="holes"></div>
                     <div className="holes"></div>
