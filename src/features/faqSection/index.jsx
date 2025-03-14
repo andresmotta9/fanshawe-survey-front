@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./styles.css";
+import { FaAngleDown, FaArrowDown } from "react-icons/fa";
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -34,9 +35,9 @@ const FAQ = () => {
         <div key={index} className={`faq-item ${openIndex === index ? "open" : ""}`}>
           <button className="faq-question" onClick={() => toggleFAQ(index)}>
             <span className="faq-text">{faq.question}</span>
-            <span className={`faq-icon ${openIndex === index ? "rotate" : ""}`}>&#9660;</span>
+            <span className="faq-icon"><FaAngleDown/></span>
           </button>
-          <div className="faq-answer">{faq.answer}</div>
+          { openIndex === index ? <div className="faq-answer">{faq.answer}</div> : null}
         </div>
       ))}
     </div>
