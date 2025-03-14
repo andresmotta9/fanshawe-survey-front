@@ -58,7 +58,24 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="footer-bottom">
-        <p>© 2025 FanSurvey. All rights reserved.</p>
+      <p>
+  © 2025{" "}
+  <span
+    style={{ cursor: "pointer" }}
+    onClick={() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" }); // Scrolls to top
+      setTimeout(() => {
+        window.location.reload(); // Refreshes the page
+      }, 700);
+    }}
+    onMouseEnter={(e) => (e.target.style.textDecoration = "underline")}
+    onMouseLeave={(e) => (e.target.style.textDecoration = "none")}
+  >
+    FanSurvey
+  </span>
+  . All rights reserved.
+</p>
+
       </div>
     </footer>
   );
