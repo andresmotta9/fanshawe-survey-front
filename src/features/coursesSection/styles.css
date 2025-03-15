@@ -62,13 +62,21 @@
     margin-bottom: 10px;
     
 }
-.courseLink{
-    color: blue;
-    font-style: italic;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.courseLink {
+  color: blue;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
 }
+
+.courseLink:hover .arrow-icon {
+  transform: translateX(8px);
+  transition: transform 0.2s ease-in-out;
+}
+
 .courseFullDetails h4{
     font-weight: 700;
     margin-top: 30px;
