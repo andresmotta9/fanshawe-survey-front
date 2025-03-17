@@ -1,23 +1,30 @@
-import CourseCards from "../../components/courseCard";
-import courseInfo from "../../data/courseInfo";
-import "./styles.css";
+import CourseCards from '../../components/courseCard';
+import './styles.css';
 
-export default function CoursesAvailable({ activeCard, setActiveCard }) {
+export default function CoursesAvailable({
+  activeCard,
+  setActiveCard,
+  courses,
+}) {
   function handleCardClick(index) {
     setActiveCard(activeCard === index ? null : index);
   }
 
   return (
     <div className="courseCardContainer">
-      {courseInfo.map((course, i) => (
-        <CourseCards
-          key={i}
-          courseTitle={course.title}
-          courseName={course.name}
-          cardButtonClicked={activeCard === i}
-          onClick={() => handleCardClick(i)}
-        />
-      ))}
+      {courses && courses.length > 0 ? (
+        courses.map((course) => (
+          <CourseCards
+            key={course.program_code}
+            courseTitle={course.program_code}
+            courseName={course.program_name}
+            cardButtonClicked={activeCard === course.program_code}
+            onClick={() => handleCardClick(course.program_code)}
+          />
+        ))
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 }

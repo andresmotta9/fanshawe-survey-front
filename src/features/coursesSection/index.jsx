@@ -1,17 +1,16 @@
-import CourseCards from "../../components/courseCard";
-import "./styles.css";
-import { useMediaQuery } from "react-responsive";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import courseInfo from "../../data/courseInfo";
+import './styles.css';
+import { useMediaQuery } from 'react-responsive';
+import { useState } from 'react';
 
-import CoursesAvailable from "./courseCardContainer";
-import CourseDetails from "./courseDetails";
+import CoursesAvailable from './courseCardContainer';
+import CourseDetails from './courseDetails';
+import useFetch from '../../hooks/useFetch';
+import { API_KEYS } from '../../config/apiConfig';
 
 export default function CoursesSection() {
-  let [activeCard, setActiveCard] = useState(null);
+  let [activeCardCode, setActiveCardCode] = useState(null);
   const isDesktop = useMediaQuery({ minWidth: 750 });
-
+  const { data: coursesList } = useFetch(API_KEYS.COURSES);
 
   return (
     <div className="coursesSection">
@@ -24,9 +23,16 @@ export default function CoursesSection() {
       </div>
       <div className="coursesSectionContent">
         <div className="TextHeading">COURSES AVAILABLE</div>
-        <CoursesAvailable activeCard={activeCard} setActiveCard={setActiveCard}/>
-        {activeCard !== null ? (
-          <CourseDetails activeCard={activeCard}/>
+        <CoursesAvailable
+          activeCard={activeCardCode}
+          setActiveCard={setActiveCardCode}
+          courses={coursesList}
+        />
+        {activeCardCode !== null ? (
+          <CourseDetails
+            activeCard={activeCardCode}
+            courses={[...coursesList]}
+          />
         ) : null}
       </div>
     </div>
