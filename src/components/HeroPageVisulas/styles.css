@@ -1,0 +1,75 @@
+.heroVisuals{
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    color: black;
+}
+.firstVisual{
+    display: none;
+    position: relative;
+    top: 17vh;
+    left: 19vw;
+    height: 70px;
+    width: 70px;
+}
+.SecondVisual{
+    position: relative;
+    top: 16vh;
+    left: 75vw;
+    height: 60px;
+    width: 60px;
+}
+.ThirdVisual{
+    display: none;
+    position: relative;
+    top: 30vh;
+    left: 75vw;
+    height: 80px;
+    width: 80px;
+}
+.FourthVisual{
+    position: relative;
+    top: 32vh;
+    left: 6vw;
+    height: 120px;
+    width: 120px;
+}
+
+/* for desktop screens */
+@media (min-width: 1024px) {
+    .firstVisual{
+        display: block;
+        position: relative;
+        top: 17vh;
+        left: 19vw;
+        height: 70px;
+        width: 70px;
+    }
+    .SecondVisual{
+        display: block;
+        position: relative;
+        top: 6vh;
+        left: 75vw;
+        height: 80px;
+        width: 80px;
+    }
+    .ThirdVisual{
+        display: block;
+        position: relative;
+        top: 30vh;
+        left: 75vw;
+        height: 80px;
+        width: 80px;
+    }
+    .FourthVisual{
+        display: block;
+        position: relative;
+        top: 20vh;
+        left: 16vw;
+        height: 160px;
+        width: 160px;
+    }
+}
+

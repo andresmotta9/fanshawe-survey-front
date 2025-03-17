@@ -6,6 +6,7 @@ import CoursesSection from './features/coursesSection';
 import FooterSection from './features/footerSection';
 import BannerSection from './features/bannerSection';
 import FAQ from './features/faqSection';
+import HeroPageVisuals from './components/HeroPageVisulas';
 
 function App() {
   const { data: users, loading, error } = useFetch('USERS');
@@ -13,6 +14,7 @@ function App() {
     <div>
       <HeaderSection />
       <HeroSection />
+      <HeroPageVisuals/>
       <CoursesSection />
       <BannerSection />
       <FAQ />
