@@ -5,6 +5,7 @@
     height: 100%;
     z-index: 1000;
     color: black;
+    pointer-events: none;
 }
 .firstVisual{
     display: none;
