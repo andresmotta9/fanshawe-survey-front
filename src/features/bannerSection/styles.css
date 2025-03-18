@@ -169,6 +169,19 @@
   }
 }
 
+@media (min-width: 1660px) {
+  .bannerSectionLowerContent {
+    margin: 80px 60px 0px 10px;
+  }
+  .spiralBind {
+    gap: 5.5vw;
+  }
+  .spiralBind__spiral {
+    width: 105px;
+    height: 18px;
+  }
+}
+
 @media (min-width: 1560px) {
   .bannerSectionLowerContent {
     margin: 80px 60px 0px 10px;
