@@ -1,8 +1,33 @@
 .coursesSection {
-  background-color: #bc3d3d;
+  background-image: url("./backgroundImages/backgroundImage.png");
   height: max-content;
   margin-top: 50px;
   padding-bottom: 30px;
+  position: relative;
+}
+
+.coursesSection::after{
+  position: absolute;
+  top: 0;
+  content: "";
+  display: block;
+  width: 180px;
+  height: 60px;
+  background-color: rgba(255, 175, 25, 0.5);
+  margin-left: -35px;
+  rotate: -25deg;
+}
+.coursesSection::before{
+  position: absolute;
+  right: 0px;
+  bottom: -10px;
+  content: "";
+  display: block;
+  width: 180px;
+  height: 60px;
+  background-color: rgba(255, 175, 25, 0.5);
+  rotate: -25deg;
+  overflow: none;
 }
 .bindTopCircles {
   display: flex;
@@ -115,5 +140,9 @@
     font-weight: 700;
     font-size: 20px;
     margin-top: 50px;
+  }
+  .coursesSection::before{
+    position: absolute;
+    right: -30px;
   }
 }
