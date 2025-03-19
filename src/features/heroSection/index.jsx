@@ -4,6 +4,9 @@ import "./styles.css";
 import SecondaryButton from "../../components/secondaryButton";
 import PrimaryQuizButton from "../../components/primaryQuizButton";
 import TestimonialAvatar from "../../components/testimonialAvatars";
+import avatar1 from "./avatarImages/avatar1.png";
+import avatar2 from "./avatarImages/avatar2.png";  
+import avatar3 from "./avatarImages/avatar3.png";
 
 // Variants for fade-up animation
 const fadeUpVariant = {
@@ -39,9 +42,9 @@ export default function HeroSection(props) {
 
       <motion.div className="Testimonials" variants={fadeUpVariant}>
         <motion.div className="TestimonialAvatarContainer" variants={fadeUpVariant}>
-          <TestimonialAvatar />
-          <TestimonialAvatar />
-          <TestimonialAvatar />
+          <TestimonialAvatar avatar = {avatar1}/>
+          <TestimonialAvatar avatar = {avatar2}/>
+          <TestimonialAvatar avatar = {avatar3}/>
         </motion.div>
         <motion.div variants={fadeUpVariant}>
           <div className="testimonialText">
