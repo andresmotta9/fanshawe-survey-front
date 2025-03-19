@@ -7,7 +7,11 @@ import {motion} from "framer-motion";
 
 export default function HeroPageVisuals() {
   return (
-    <div className="heroVisuals">
+    <motion.div className="heroVisuals"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 1 }}
+    >
       <motion.div className="firstVisual"
         initial={{  y: -10, rotateY: 35 }}
         animate={{   y: 0, rotateY: 0 }}
@@ -44,6 +48,6 @@ export default function HeroPageVisuals() {
       transition={{ duration: 1, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}>
         <img src={arcs} alt="" />
       </motion.div>
-    </div>
+    </motion.div>
   );
 }

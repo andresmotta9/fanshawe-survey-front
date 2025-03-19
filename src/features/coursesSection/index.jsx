@@ -14,7 +14,12 @@ export default function CoursesSection() {
 
 
   return (
-    <div className="coursesSection">
+    <motion.div className="coursesSection"
+      initial={{ opacity: 0, y: -50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+    >
       <div className="bindTopCircles">
         {Array(isDesktop ? 14 : 5)
           .fill()
@@ -29,6 +34,6 @@ export default function CoursesSection() {
           <CourseDetails activeCard={activeCard}/>
         ) : null}
       </div>
-    </div>
+    </motion.div>
   );
 }

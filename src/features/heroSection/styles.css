@@ -12,6 +12,17 @@
     margin-top: 30px;
     margin-bottom: 20px;
 }
+.styledHeader::after{
+    content: "";
+    display: block;
+    margin-left: 55%;
+    width: 100px;
+    height: 15px;
+    margin-top: -18px;
+    background-color: #FF8A8A;
+    
+    
+}
 .headerText :hover{
     color: red;
     cursor: default;
