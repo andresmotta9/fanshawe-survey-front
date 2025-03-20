@@ -14,7 +14,7 @@ const fadeUpVariant = {
   visible: { opacity: 1, y: 0, transition: { duration: 1 } },
 };
 
-export default function HeroSection(props) {
+export default function HeroSection({ onStartQuiz }) {
   return (
     <motion.div 
       className="heroSection"
@@ -37,7 +37,8 @@ export default function HeroSection(props) {
 
       <motion.div className="buttonContainer" variants={fadeUpVariant}>
         <SecondaryButton name="View Courses" />
-        <PrimaryQuizButton name="Start Quiz" />
+        {/* Pass the onStartQuiz prop to PrimaryQuizButton */}
+        <PrimaryQuizButton name="Start Quiz" onClick={onStartQuiz} />
       </motion.div>
 
       <motion.div className="Testimonials" variants={fadeUpVariant}>
