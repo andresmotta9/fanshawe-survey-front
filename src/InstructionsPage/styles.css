@@ -1,0 +1,151 @@
+.instructions-container {
+  width: 500px;
+  margin: 20px auto;
+  background-color: #e2f3ff;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.instructions-title {
+  background-color: #99ddff;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  color: black;
+}
+
+.chat-box {
+  background-color: #dff1ff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 10px;
+  position: relative;
+  min-height: 180px;
+}
+
+.chat-message {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  opacity: 1;
+  transform: none;
+}
+
+.chat-message.system {
+  justify-content: flex-start;
+}
+
+.chat-message.user {
+  justify-content: flex-end;
+}
+
+.chat-bubble {
+  background-color: white;
+  padding: 10px;
+  border-radius: 12px;
+  max-width: 75%;
+  text-align: left;
+  font-size: 14px;
+  opacity: 1;
+  color: black;
+  white-space: normal;
+  overflow: visible;
+  width: auto;
+}
+
+.user .chat-bubble {
+  background-color: #6ec6f6;
+  color: white;
+}
+
+.chat-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.chat-input input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 60%;
+  color: black;
+}
+
+.chat-input button {
+  padding: 8px;
+  background-color: #6ec6f6;
+  border: none;
+  border-radius: 6px;
+  color: black;
+  cursor: pointer;
+}
+
+.circle {
+  width: 15px;
+  height: 15px;
+  background-color: #bdbdbd;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.start-quiz-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #b71c1c;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Typing Animation */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
+}
+
+/* Apply typing animation to the starting message */
+.chat-message.system:first-child .chat-bubble {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+  border-right: 2px solid black; /* Cursor effect */
+  animation-delay: 0.5s; /* Slight delay to simulate "thinking" */
+}
+
+/* Stop blinking after typing animation completes */
+.chat-message.system:first-child .chat-bubble.typing-complete {
+  animation: none; /* Remove all animations */
+  border-right: none; /* Remove the cursor */
+}
+
+/* Apply typing animation to the last message */
+.chat-message.system:last-child .chat-bubble {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+  border-right: 2px solid black; /* Cursor effect */
+}
