@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import PrimaryQuizButton from "../../components/primaryQuizButton";
 import { useMediaQuery } from "react-responsive";
 
-export default function BannerSection() {
-    // const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+export default function BannerSection({ onStartQuiz }) {
     const isTablet = useMediaQuery({ query: '(min-width: 1024px)' });
+
     return (
         <div className="bannerSection">
             <div className="bannerSectionImageContainer">
@@ -25,7 +25,6 @@ export default function BannerSection() {
             <motion.div className="bannerSection__content"
                 viewport={{ once: true, amount: 0.2 }}
                 initial={{ opacity: 0, rotateX: isTablet ? 0 : 90, rotateY: isTablet ? -90 : 0 }}
-                // animate={{ opacity: 1, rotateX: 0 }}
                 whileInView={{ opacity: 1, rotateX: isTablet ? 0 : 0, rotateY: isTablet ? 0 : 0 }}
                 transition={{ duration: 1 }}
             >
@@ -37,7 +36,8 @@ export default function BannerSection() {
                 <div className="bannerSectionLowerContent">
                     <h4>Find your perfect IT Program</h4>
                     <p>Not sure which IT diploma program suits you best? Take our quick quiz and discover the best match based on your skills, interests, and goals. </p>
-                    <PrimaryQuizButton name="Start Quiz" />
+                    {/* Pass the onStartQuiz prop to PrimaryQuizButton */}
+                    <PrimaryQuizButton name="Start Quiz" onClick={onStartQuiz} />
                 </div>
             </motion.div>
         </div>

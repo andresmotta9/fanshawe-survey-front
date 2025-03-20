@@ -4,7 +4,7 @@ import HeaderSection from './features/headerSection';
 import HeroSection from './features/heroSection';
 import CoursesSection from './features/coursesSection';
 import FooterSection from './features/footerSection';
-import BannerSection from './features/bannerSection';
+import BannerSection from './features/bannerSection'; // Import BannerSection
 import FAQ from './features/faqSection';
 import HeroPageVisuals from './components/HeroPageVisulas';
 import InstructionsPage from './InstructionsPage'; // Adjust the import path as needed
@@ -32,7 +32,8 @@ function App() {
           <HeroSection onStartQuiz={handleStartQuizClick} />
           <HeroPageVisuals />
           <CoursesSection />
-          <BannerSection />
+          {/* Pass the handleStartQuizClick function to BannerSection */}
+          <BannerSection onStartQuiz={handleStartQuizClick} />
           <FAQ />
           <FooterSection />
         </>
