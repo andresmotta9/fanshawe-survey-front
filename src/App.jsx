@@ -1,43 +1,18 @@
-import { useState } from 'react';
-import useFetch from './hooks/useFetch';
-import HeaderSection from './features/headerSection';
-import HeroSection from './features/heroSection';
-import CoursesSection from './features/coursesSection';
-import FooterSection from './features/footerSection';
-import BannerSection from './features/bannerSection'; // Import BannerSection
-import FAQ from './features/faqSection';
-import HeroPageVisuals from './components/HeroPageVisulas';
-import InstructionsPage from './InstructionsPage'; // Adjust the import path as needed
+import { Route, Routes } from 'react-router-dom';
+import { Home } from './pages/Home';
+import Instructions from './pages/Instructions';
+import { Survey } from './pages/Survey';
 
 function App() {
-  const { data: users, loading, error } = useFetch('USERS');
-  const [showInstructions, setShowInstructions] = useState(false); // State to control visibility
-
-  // Function to handle the "Start Quiz" button click
-  const handleStartQuizClick = () => {
-    setShowInstructions(true);
-  };
-
   return (
     <div>
-      {/* Pass the handleStartQuizClick function to HeaderSection */}
-      <HeaderSection onStartQuiz={handleStartQuizClick} />
-
       {/* Conditionally render InstructionsPage or other components */}
-      {showInstructions ? (
-        <InstructionsPage onStartQuiz={() => setShowInstructions(false)} />
-      ) : (
-        <>
-          {/* Pass the handleStartQuizClick function to HeroSection */}
-          <HeroSection onStartQuiz={handleStartQuizClick} />
-          <HeroPageVisuals />
-          <CoursesSection />
-          {/* Pass the handleStartQuizClick function to BannerSection */}
-          <BannerSection onStartQuiz={handleStartQuizClick} />
-          <FAQ />
-          <FooterSection />
-        </>
-      )}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/instructions" element={<Instructions />} />
+        <Route path="/survey" element={<Survey />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
     </div>
   );
 }
