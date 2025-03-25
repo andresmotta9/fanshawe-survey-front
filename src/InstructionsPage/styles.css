@@ -110,50 +110,53 @@
   width: 100%; /* Full width on mobile */
 }
 
-/* Typing Animation */
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  height: 17px;
+  padding: 10px 15px;
 }
 
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: black;
-  }
-}
-
-/* Apply typing animation to the starting message */
-.chat-message.system:first-child .chat-bubble {
+.dot {
   display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
-  border-right: 2px solid black; /* Cursor effect */
-  animation-delay: 0.5s; /* Slight delay to simulate "thinking" */
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #666;
+  margin: 0 2px;
+  animation: bounce 1.4s infinite ease-in-out both;
 }
 
-/* Stop blinking after typing animation completes */
-.chat-message.system:first-child .chat-bubble.typing-complete {
-  animation: none; /* Remove all animations */
-  border-right: none; /* Remove the cursor */
+.dot:nth-child(1) {
+  animation-delay: -0.32s;
 }
 
-/* Apply typing animation to the last message */
-.chat-message.system:last-child .chat-bubble {
+.dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+
+.chat-message.system .chat-bubble {
   display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
-  border-right: 2px solid black; /* Cursor effect */
+  max-width: 75%;
+  text-align: left;
+  opacity: 1;
+  animation: none;
+  border-right: none;
 }
+
+
 
 /* Media Queries for Larger Screens */
 @media (min-width: 600px) {
@@ -168,6 +171,6 @@
 
 @media (min-width: 900px) {
   .instructions-container {
-    width: 500px; /* Fixed width for desktops */
+    width: 600px; /* Fixed width for desktops */
   }
 }

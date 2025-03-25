@@ -5,28 +5,62 @@ export default function InstructionsPage({ onStartQuiz }) {
   const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [messages, setMessages] = useState([]);
-  const [typing, setTyping] = useState(false);
-  const [typingComplete, setTypingComplete] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  const [] = useState(0);
+
+  // Messages to be shown with typing indicators
+  const botMessages = [
+    "Hey👋 what's your name?",
+    `Nice to meet you <strong>${name}</strong> 😊, just want you to know how important your answers are, so we'd like you to be sincere and make the answers you pick represent you as much as possible.`,
+    "Alright, let's begin 🔥"
+  ];
 
   useEffect(() => {
-    // Simulate the starting message with a typing effect
-    setTimeout(() => {
-      setMessages([{ text: "Hey👋 what’s your name?", user: false }]);
-    }, 500); // Delay to simulate "thinking"
+    // Show first message after delay
+    const timer1 = setTimeout(() => {
+      setIsTyping(true);
+    }, 500);
 
-    // Mark typing as complete after the animation duration (2s + 0.5s delay)
-    const typingTimeout = setTimeout(() => {
-      setTypingComplete(true);
-    }, 2500); // 500ms delay + 2000ms typing animation
+    const timer2 = setTimeout(() => {
+      setIsTyping(false);
+      setMessages([{ text: botMessages[0], user: false }]);
+    }, 2000);
 
-    return () => clearTimeout(typingTimeout); // Cleanup timeout
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
   }, []);
+
+  useEffect(() => {
+    if (submitted) {
+      // Show second message
+      setIsTyping(true);
+      const timer1 = setTimeout(() => {
+        setIsTyping(false);
+        setMessages(prev => [...prev, { text: botMessages[1], user: false }]);
+      }, 2000);
+
+      // Show third message
+      const timer2 = setTimeout(() => {
+        setIsTyping(true);
+        setTimeout(() => {
+          setIsTyping(false);
+          setMessages(prev => [...prev, { text: botMessages[2], user: false }]);
+        }, 2000);
+      }, 2000);
+
+      return () => {
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+      };
+    }
+  }, [submitted, name]);
 
   const handleNameSubmit = () => {
     if (name.trim()) {
       setSubmitted(true);
-      setMessages((prev) => [...prev, { text: name, user: true }]);
-      setTyping(true);
+      setMessages(prev => [...prev, { text: name, user: true }]);
     }
   };
 
@@ -36,25 +70,6 @@ export default function InstructionsPage({ onStartQuiz }) {
     }
   };
 
-  useEffect(() => {
-    if (submitted) {
-      setTimeout(() => {
-        setMessages((prev) => [
-          ...prev,
-          { text: `Nice to meet you <strong>${name}</strong> 😊, just want you to know how important your answers are, so we’d like you to be sincere and make the answers you pick represent you as much as possible.`, user: false },
-        ]);
-      }, 1500);
-
-      setTimeout(() => {
-        setMessages((prev) => [
-          ...prev,
-          { text: "Alright, let’s begin 🔥", user: false },
-        ]);
-        setTyping(false);
-      }, 3000);
-    }
-  }, [submitted, name]);
-
   return (
     <div className="instructions-container">
       <h2 className="instructions-title">INSTRUCTIONS</h2>
@@ -63,19 +78,26 @@ export default function InstructionsPage({ onStartQuiz }) {
         {messages.map((msg, index) => (
           <div
             key={index}
-            className={`chat-message ${msg.user ? "user" : "system"} ${
-              typing && index === messages.length - 1 ? "typing" : ""
-            }`}
+            className={`chat-message ${msg.user ? "user" : "system"}`}
           >
             <div
-              className={`chat-bubble ${
-                index === 0 && typingComplete ? "typing-complete" : ""
-              }`}
+              className="chat-bubble"
               dangerouslySetInnerHTML={{ __html: msg.text }}
             ></div>
             <div className="circle"></div>
           </div>
         ))}
+
+        {isTyping && (
+          <div className="chat-message system">
+            <div className="chat-bubble typing-indicator">
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+            </div>
+            <div className="circle"></div>
+          </div>
+        )}
 
         {!submitted && (
           <div className="chat-input">
@@ -90,7 +112,7 @@ export default function InstructionsPage({ onStartQuiz }) {
           </div>
         )}
 
-        {submitted && !typing && (
+        {submitted && !isTyping && (
           <button className="start-quiz-btn" onClick={onStartQuiz}>
             Begin Quiz
           </button>
