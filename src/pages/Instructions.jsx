@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './instructions.css';
+import { Link } from 'react-router-dom';
 
 export default function Instructions() {
   const [name, setName] = useState('');
@@ -116,7 +117,9 @@ export default function Instructions() {
         )}
 
         {submitted && !isTyping && (
-          <button className="start-quiz-btn">Begin Quiz</button>
+          <Link className="start-quiz-btn" to="/survey">
+            Begin Quiz
+          </Link>
         )}
       </div>
     </div>
