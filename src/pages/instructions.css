@@ -1,7 +1,7 @@
 /* Mobile-First Styles */
 .instructions-container {
-  width: 90%; /* Use percentage for width */
-  max-width: 500px; /* Limit maximum width */
+  width: 90%;
+  max-width: 500px;
   margin: 20px auto;
   background-color: #e2f3ff;
   padding: 20px;
@@ -14,7 +14,7 @@
 .instructions-title {
   background-color: #99ddff;
   padding: 10px;
-  font-size: 1.25rem; /* Use rem for font size */
+  font-size: 1.9rem;
   font-weight: bold;
   border-radius: 8px;
   color: black;
@@ -29,43 +29,87 @@
   min-height: 180px;
 }
 
+/* Message alignment */
 .chat-message {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  opacity: 1;
-  transform: none;
 }
 
+/* System messages (bot) on left */
 .chat-message.system {
   justify-content: flex-start;
 }
 
+/* User messages on right */
 .chat-message.user {
   justify-content: flex-end;
 }
 
+/* Chat bubbles */
 .chat-bubble {
-  background-color: white;
   padding: 10px;
   border-radius: 12px;
   max-width: 75%;
   text-align: left;
-  font-size: 0.875rem; /* Use rem for font size */
-  opacity: 1;
-  color: black;
-  white-space: normal;
-  overflow: visible;
-  width: auto;
+  font-size: 0.875rem;
 }
 
-.user .chat-bubble {
+/* System bubble styling */
+.chat-message.system .chat-bubble {
+  background-color: white;
+  color: black;
+  border-top-left-radius: 0; /* Sharp edge on left */
+}
+
+/* User bubble styling */
+.chat-message.user .chat-bubble {
   background-color: #6ec6f6;
   color: white;
+  border-top-right-radius: 0; /* Sharp edge on right */
 }
 
+/* Typing Indicator Styles */
+.typing-indicator {
+  display: flex;
+  justify-content: flex-start; /* Align container to left */
+  width: 100%;
+}
+
+.typing-bubble {
+  background-color: white;
+  border-radius: 12px;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: center; /* Center dots within bubble */
+  width: fit-content;
+  max-width: 75%;
+  border-top-left-radius: 0; /* Sharp edge on left side */
+}
+
+/* Dot animation styles (unchanged) */
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #212121;
+  margin: 0 2px;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.dot:nth-child(1) { animation-delay: -0.32s; }
+.dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+/* Input container */
 .chat-input {
   display: flex;
+  justify-content: flex-end; /* Align input to right */
   align-items: center;
   gap: 10px;
   margin: 10px 0;
@@ -77,7 +121,7 @@
   border-radius: 6px;
   width: 60%;
   color: black;
-  font-size: 0.875rem; /* Use rem for font size */
+  font-size: 0.875rem;
 }
 
 .chat-input button {
@@ -87,7 +131,7 @@
   border-radius: 6px;
   color: black;
   cursor: pointer;
-  font-size: 0.875rem; /* Use rem for font size */
+  font-size: 0.875rem;
 }
 
 .circle {
@@ -103,74 +147,25 @@
   padding: 10px 20px;
   background-color: #b71c1c;
   color: white;
-  font-size: 1rem; /* Use rem for font size */
+  font-size: 1rem;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  width: 100%; /* Full width on mobile */
+  width: 100%;
 }
 
-
-
-.typing-indicator {
-  display: flex;
-  align-items: center;
-  height: 17px;
-  padding: 10px 15px;
-}
-
-.dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #666;
-  margin: 0 2px;
-  animation: bounce 1.4s infinite ease-in-out both;
-}
-
-.dot:nth-child(1) {
-  animation-delay: -0.32s;
-}
-
-.dot:nth-child(2) {
-  animation-delay: -0.16s;
-}
-
-@keyframes bounce {
-  0%, 80%, 100% {
-    transform: scale(0);
-  }
-  40% {
-    transform: scale(1);
-  }
-}
-
-
-.chat-message.system .chat-bubble {
-  display: inline-block;
-  max-width: 75%;
-  text-align: left;
-  opacity: 1;
-  animation: none;
-  border-right: none;
-}
-
-
-
-/* Media Queries for Larger Screens */
+/* Media Queries */
 @media (min-width: 600px) {
   .instructions-container {
-    width: 80%; /* Adjust width for tablets */
+    width: 80%;
   }
-
   .start-quiz-btn {
-    width: auto; /* Auto width for larger screens */
+    width: auto;
   }
 }
 
 @media (min-width: 900px) {
   .instructions-container {
-    width: 600px; /* Fixed width for desktops */
+    width: 600px;
   }
 }

@@ -92,16 +92,18 @@ export default function Instructions() {
           </div>
         ))}
 
-        {isTyping && (
-          <div className="chat-message system">
-            <div className="chat-bubble typing-indicator">
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-            </div>
-            <div className="circle"></div>
-          </div>
-        )}
+{isTyping && (
+  <div className="chat-message system">
+    <div className="typing-indicator">
+      <div className="typing-bubble">
+        <span className="dot"></span>
+        <span className="dot"></span>
+        <span className="dot"></span>
+      </div>
+      <div className="circle"></div>
+    </div>
+  </div>
+)}
 
         {!submitted && (
           <div className="chat-input">
