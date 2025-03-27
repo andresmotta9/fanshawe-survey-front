@@ -1,11 +1,16 @@
-import React from 'react';
-import './styles.css';
+import React  from "react";
+import "./styles.css";
 
 export default function Option(props) {
-    return(
-        <div className="option active">
-          <div className="optionIndex">A</div>
-          <div className="optionText">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, perspiciatis.</div>
-        </div>
-    )
+
+  
+  return (
+    <div
+      className={`option ${props.active ? "active" : ""}`}
+      onClick={props.onClick}
+    >
+      <div className="optionIndex">{props.optionIndex}</div>
+      <div className="optionText">{props.optionText}</div>
+    </div>
+  );
 }

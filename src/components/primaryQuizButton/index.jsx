@@ -14,7 +14,7 @@ function MobileHeader({ onClick }) {
 // PrimaryQuizButton component
 export default function PrimaryQuizButton({ mobileHeader, name, onClick }) {
   return (
-    <div>
+    <>
       {mobileHeader ? (
         // Pass onClick to MobileHeader
         <MobileHeader onClick={onClick} />
@@ -24,6 +24,6 @@ export default function PrimaryQuizButton({ mobileHeader, name, onClick }) {
           {name}
         </button>
       )}
-    </div>
+    </>
   );
 }

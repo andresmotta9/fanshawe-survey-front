@@ -1,0 +1,54 @@
+.envelope {
+  position: relative;
+  width: 300px; /* Can be changed dynamically */
+  height: 200px; /* Adjustable without hardcoding */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Left and Right sides */
+.leftSide,
+.rightSide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background-color: green;
+}
+
+/* Left Side */
+.leftSide {
+  left: 0;
+  clip-path: polygon(0% 0%, 50% 50%, 0% 100%, 0% 0%);
+
+}
+
+/* Right Side */
+.rightSide {
+  right: 0;
+  clip-path: polygon(100% 0%, 50% 50%, 100% 100%, 100% 0%);
+}
+
+/* Top Side */
+.topSide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 130%;
+  background-color: green;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 8%, 70% 50%, 30% 50%, 0% 8%);
+  z-index: 2;
+}
+
+/* Bottom Side */
+.bottomSide {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: green;
+  clip-path: polygon(0% 92%, 0% 100%, 100% 100%, 100% 92%, 80% 0%, 20% 0%);
+}
