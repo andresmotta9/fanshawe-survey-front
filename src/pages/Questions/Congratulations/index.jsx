@@ -1,5 +1,7 @@
 import ResultEnvelope from "../../../components/ResultEnvelope";
 import "./styles.css";
+import animationData from "../../../assets/confetti.json";
+import Lottie from "lottie-react";
 
 export default function Congratulations() {
     return(
@@ -12,6 +14,12 @@ export default function Congratulations() {
                         <ResultEnvelope/>
                     </div>
                 </div>
+            </div>
+            <div className="congratulationsConfetti">
+                <Lottie animationData={animationData}
+                    loop={true}
+                    autoplay={true}
+                />
             </div>
         </div>
     )

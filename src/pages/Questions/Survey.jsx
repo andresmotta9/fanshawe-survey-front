@@ -4,6 +4,7 @@ import Option from "./option";
 import PrimaryQuizButton from "../../components/primaryQuizButton";
 import SecondaryButton from "../../components/secondaryButton";
 import Congratulations from "./Congratulations";
+import { motion } from "framer-motion";
 
 const questions = [
   {
@@ -74,11 +75,21 @@ const questions = [
 export default function Survey() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
+  const [quizFinished, setQuizFinished] = useState(false);
+  const [noSelection, setNoSelection] = useState(false);
 
   const handleNextQuestion = () => {
+    if (selectedOptionIndex === null) {
+      setNoSelection(true);
+      return;
+    }
     if (questionIndex < questions.length - 1) {
+      setNoSelection(false);
       setQuestionIndex(questionIndex + 1);
       setSelectedOptionIndex(null);
+    }
+    else {
+      setQuizFinished(true);
     }
   };
 
@@ -89,7 +100,15 @@ export default function Survey() {
 
   return (
     <>
-    <div className="QuizContainer">
+    < motion.div className="QuizContainer"
+      animate={{
+        x: noSelection ? [0, -5, 5, -5, 5, 0] : 0, // Moves left & right
+      }}
+      transition={{
+        duration: 0.2, // Quick duration
+        ease: "easeInOut",
+      }}
+    >
       <div className="progressBar">
         <div
           className="progressBarFill"
@@ -152,8 +171,8 @@ export default function Survey() {
         <SecondaryButton name="Previous" />
         <PrimaryQuizButton name={questionIndex > questions.length -2 ? "Finish" : "Next" } onClick={handleNextQuestion} />
       </div>
-    </div>
-    {/* <Congratulations/> */}
+    </motion.div>
+    {quizFinished && <Congratulations/>}
     </>
   );
 }
