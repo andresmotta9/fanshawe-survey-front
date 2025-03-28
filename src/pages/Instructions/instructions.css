@@ -1,9 +1,9 @@
 /* Mobile-First Styles */
 .instructions-container {
   width: 90%;
-  max-width: 500px;
+  max-width: 550px;
   margin: 20px auto;
-  background-color: #e2f3ff;
+  background-color: #E4F8FF;
   padding: 20px;
   border-radius: 10px;
   border: 2px solid #ccc;
@@ -12,7 +12,7 @@
 }
 
 .instructions-title {
-  background-color: #99ddff;
+  background-color: #B2EBFF;
   padding: 10px;
   font-size: 1.9rem;
   font-weight: bold;
@@ -21,7 +21,7 @@
 }
 
 .chat-box {
-  background-color: #dff1ff;
+  background-color: #E4F8FF;
   padding: 20px;
   border-radius: 8px;
   margin-top: 10px;
@@ -52,7 +52,7 @@
   border-radius: 12px;
   max-width: 75%;
   text-align: left;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 /* System bubble styling */
