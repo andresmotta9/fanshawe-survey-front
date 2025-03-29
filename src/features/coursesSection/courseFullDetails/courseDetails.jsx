@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
-import courseInfo from "../../data/courseInfo";
+import courseInfo from "../../../data/courseInfo";
+import "./styles.css";
 
 export default function CourseDetails({ activeCard }) {
   const course = courseInfo[activeCard];

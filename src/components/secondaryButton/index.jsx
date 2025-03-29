@@ -4,7 +4,7 @@ import './styles.css'
 
 export default function SecondaryButton(props) {
     return(
-        <button className="secondaryButton">
+        <button className="secondaryButton" onClick={props.onClick}>
             {props.name}
         </button>
     )

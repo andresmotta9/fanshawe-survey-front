@@ -1,0 +1,7 @@
+.resultContent{
+    position: absolute;
+    width: 100%;
+    height: max-content;
+    background-color: white;
+    border: 2px solid black;
+}

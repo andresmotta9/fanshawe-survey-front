@@ -6,15 +6,15 @@ import { motion } from "framer-motion";
 import courseInfo from "../../data/courseInfo";
 
 import CoursesAvailable from "./courseCardContainer";
-import CourseDetails from "./courseDetails";
+import CourseDetails from "./courseFullDetails/courseDetails";
 
 export default function CoursesSection() {
   let [activeCard, setActiveCard] = useState(null);
   const isDesktop = useMediaQuery({ minWidth: 750 });
 
-
   return (
-    <motion.div className="coursesSection"
+    <motion.div
+      className="coursesSection"
       initial={{ opacity: 0, y: -50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
@@ -29,9 +29,14 @@ export default function CoursesSection() {
       </div>
       <div className="coursesSectionContent">
         <div className="TextHeading">COURSES AVAILABLE</div>
-        <CoursesAvailable activeCard={activeCard} setActiveCard={setActiveCard}/>
+        <CoursesAvailable
+          activeCard={activeCard}
+          setActiveCard={setActiveCard}
+        />
         {activeCard !== null ? (
-          <CourseDetails activeCard={activeCard}/>
+          <div className="courseDetailContain">
+            <CourseDetails activeCard={activeCard} />
+          </div>
         ) : null}
       </div>
     </motion.div>

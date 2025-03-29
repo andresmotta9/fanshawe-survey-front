@@ -3,7 +3,7 @@ import "./styles.css";
 import animationData from "../../../assets/confetti.json";
 import Lottie from "lottie-react";
 
-export default function Congratulations() {
+export default function Congratulations({onClick}) {
     return(
         <div className="congratulations">
             <div className="congratulationsContainer">
@@ -11,7 +11,7 @@ export default function Congratulations() {
                     <h1>Congratulations!</h1>
                     <p>You’ve completed the survey! Your results are ready—click below to explore your insights and see how you did. 🚀</p>
                     <div className="envelopeContainer">
-                        <ResultEnvelope/>
+                        <ResultEnvelope onClick={onClick}/>
                     </div>
                 </div>
             </div>

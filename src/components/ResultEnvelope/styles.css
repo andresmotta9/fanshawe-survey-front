@@ -6,6 +6,18 @@
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  
+}
+.openedEnvelope {
+  position: relative;
+  width: 900px; /* Can be changed dynamically */
+  height: 500px; /* Adjustable without hardcoding */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
   
 }
 
@@ -16,13 +28,15 @@
   top: 0;
   bottom: 0;
   width: 50%;
-  background: linear-gradient(180deg, #067DA8 0%, #B2EBFF 100%);
+  background: linear-gradient(180deg, #FF5454 0%, #8D1515 100%);
+  border-radius: 10px;
 }
 
 /* Left Side */
 .leftSide {
   left: 0;
   clip-path: polygon(0% 0%, 50% 50%, 0% 100%, 0% 0%);
+  transform-origin: left;
 
 }
 
@@ -30,6 +44,7 @@
 .rightSide {
   right: 0;
   clip-path: polygon(100% 0%, 50% 50%, 100% 100%, 100% 0%);
+  transform-origin: right;
 }
 
 /* Top Side */
@@ -41,8 +56,9 @@
   height: 130%;
   background-color: green;
   clip-path: polygon(0% 0%, 100% 0%, 100% 8%, 70% 50%, 30% 50%, 0% 8%);
-  z-index: 2;
-  background: linear-gradient(180deg, #067DA8 0%, #B2EBFF 100%);
+  background: linear-gradient(180deg, #a82e2e 0%, #ff4d4d 50%);
+  border-radius: 10px;
+  transform-origin: top;
 }
 
 /* Bottom Side */
@@ -54,10 +70,61 @@
   height: 50%;
   background-color: green;
   clip-path: polygon(0% 92%, 0% 100%, 100% 100%, 100% 92%, 80% 0%, 20% 0%);
-  background: linear-gradient(180deg, #067DA8 0%, #B2EBFF 100%);
+  background: linear-gradient(180deg, #FF5454 0%, #8D1515 100%);
+  border-radius: 10px;
+  transform-origin: bottom;
 }
 .envelopeContent{
     background-color: yellow;
+}
+.openButton{
+  position: absolute;
+  top: 40%;
+  background-color: green;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9;
+  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 1);
+  border: 3px solid #000000;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+  background: linear-gradient(180deg, #98E2FF 0%, #2A7894 50%);
+}
+.openButton::after{
+  content: '';
+  position: absolute;
+  width: 70px;
+  height: 100px;
+  top: 53%;
+  clip-path: polygon(22% 29%, 38% 32%, 30% 70%, 18% 58%, 0% 59%);
+  background-color: black;
+}
+.openButton::before{
+  content: '';
+  position: absolute;
+  width: 70px;
+  height: 100px;
+  top: 51%;
+  left: 0%;
+  clip-path: polygon(22% 29%, 38% 32%, 30% 70%, 18% 58%, 0% 59%);
+  transform: rotateY(180deg);
+  background-color: black;
+}
+.openButton:hover{
+  box-shadow: 0px 8px 0px 0px rgba(0, 0, 0, 1);
+  transform: translateY(5px);
+  transition: all 0.3s;
+}
+.ResultsRealContent{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
 }
 
 /* desktop screen */

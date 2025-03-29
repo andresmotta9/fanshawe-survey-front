@@ -5,6 +5,7 @@ import PrimaryQuizButton from "../../components/primaryQuizButton";
 import SecondaryButton from "../../components/secondaryButton";
 import Congratulations from "./Congratulations";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const questions = [
   {
@@ -77,6 +78,7 @@ export default function Survey() {
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
   const [quizFinished, setQuizFinished] = useState(false);
   const [noSelection, setNoSelection] = useState(false);
+  const navigate = useNavigate();
 
   const handleNextQuestion = () => {
     if (selectedOptionIndex === null) {
@@ -93,10 +95,21 @@ export default function Survey() {
     }
   };
 
+  const handlePreviousQuestion = () => {
+    if (questionIndex > 0) {
+      setQuestionIndex(questionIndex - 1);
+      setSelectedOptionIndex(null);
+    }
+  }
+
   const handleSelectedOption = (index) => {
     setSelectedOptionIndex(index);
     console.log(index);
   };
+
+  const handleNavigateToResults = () =>{
+    navigate("/results");
+  }
 
   return (
     <>
@@ -168,11 +181,11 @@ export default function Survey() {
       </div>
       
       <div className="nextButton">
-        <SecondaryButton name="Previous" />
+        <SecondaryButton name="Previous" onClick={handlePreviousQuestion}/>
         <PrimaryQuizButton name={questionIndex > questions.length -2 ? "Finish" : "Next" } onClick={handleNextQuestion} />
       </div>
     </motion.div>
-    {quizFinished && <Congratulations/>}
+    {quizFinished && <Congratulations onClick={handleNavigateToResults}/>}
     </>
   );
 }
