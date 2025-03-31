@@ -36,7 +36,7 @@ export default function HeroSection({ onStartQuiz }) {
       </motion.div>
 
       <motion.div className="buttonContainer" variants={fadeUpVariant}>
-        <SecondaryButton name="View Courses" />
+        <SecondaryButton name="View Programs" />
         {/* Pass the onStartQuiz prop to PrimaryQuizButton */}
         <div style= {{margin: "0px 16px"}}>
         <PrimaryQuizButton name="Start Quiz" onClick={onStartQuiz} />

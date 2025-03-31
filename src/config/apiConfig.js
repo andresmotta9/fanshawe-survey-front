@@ -4,8 +4,16 @@ const API_ENDPOINTS = {
   USERS: `${API_BASE_URL}/users`, // Fetch all users (admins in this case)
   LOGIN: `${API_BASE_URL}/auth/login`,
   DIPLOMAS: `${API_BASE_URL}/diplomas`,
-  QUESTIONS: `${API_BASE_URL}/questions`,
+  QUESTIONS: `${API_BASE_URL}/fields/questions`,
   ANSWERS: `${API_BASE_URL}/answers`,
+};
+
+export const API_ENDPOINTS_KEY = {
+  USERS: 'USERS',
+  LOGIN: 'LOGIN',
+  DIPLOMAS: 'DIPLOMAS',
+  QUESTIONS: 'QUESTIONS',
+  ANSWERS: 'ANSWERS'
 };
 
 export default API_ENDPOINTS;

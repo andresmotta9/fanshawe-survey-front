@@ -23,6 +23,7 @@ const useFetch = (endpointKey) => {
 
     fetchData();
   }, [endpointKey]);
+  console.log(endpointKey)
 
   return { data, loading, error };
 };
