@@ -7,8 +7,7 @@ import Congratulations from "./Congratulations";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import { API_ENDPOINTS_KEY } from "../../config/apiConfig";
-
+import API_ENDPOINTS, { API_ENDPOINTS_KEY } from "../../config/apiConfig";
 export default function Survey() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
@@ -16,11 +15,15 @@ export default function Survey() {
   const [noSelection, setNoSelection] = useState(false);
   const navigate = useNavigate();
   const [answers, setAnswers] = useState([]);
+  const [fetchTrigger, setFetchTrigger]= useState(false)
 
   const handleNextQuestion = () => {
     if (selectedOptionIndex === null) {
       setNoSelection(true);
       return;
+    }
+    if (selectedOptionIndex === 5) {
+      setFetchTrigger(true)
     }
     if (questionIndex < questions.length - 1) {
       setNoSelection(false);
@@ -32,6 +35,8 @@ export default function Survey() {
       console.log(answers)
     }
   };
+
+  
 
   const handlePreviousQuestion = () => {
     if (questionIndex > 0) {
@@ -59,11 +64,16 @@ export default function Survey() {
   const handleNavigateToResults = () => {
     navigate("/results");
   };
-  const myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
 
-  const { data, loading, error } = useFetch(API_ENDPOINTS_KEY.QUESTIONS);
-  console.log(data, loading, error);
+  
+
+  const { data, loading, error } = useFetch(API_ENDPOINTS.QUESTIONS_FIELDS);
+  const {
+    data: winnerFieldInfo,
+    loading: winnerFieldLoading,
+    error: winnerFieldErr,
+  } = useFetch(API_ENDPOINTS.ANSWER_FIELDS, answers);
+  console.log(winnerFieldInfo,winnerFieldErr)
 
   const questions = data ? data : [];
 
@@ -143,7 +153,7 @@ export default function Survey() {
           <div className="nextButton">
             <SecondaryButton name="Previous" onClick={handlePreviousQuestion} />
             <PrimaryQuizButton
-              name={questionIndex > questions.length - 2 ? "Finish" : "Next"}
+              name={questionIndex == 22 ? "Finish" : "Next"}
               onClick={handleNextQuestion}
             />
           </div>
