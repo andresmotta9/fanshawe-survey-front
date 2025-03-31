@@ -7,7 +7,7 @@ export default function Instructions() {
   const [submitted, setSubmitted] = useState(false);
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
-  const [showInput, setShowInput] = useState(false); // New state for controlling input visibility
+  const [showInput, setShowInput] = useState(false);
 
   const botMessages = [
     "Hey👋 what's your name?",
@@ -16,7 +16,6 @@ export default function Instructions() {
   ];
 
   useEffect(() => {
-    // Show first message after delay
     const timer1 = setTimeout(() => {
       setIsTyping(true);
     }, 500);
@@ -24,7 +23,7 @@ export default function Instructions() {
     const timer2 = setTimeout(() => {
       setIsTyping(false);
       setMessages([{ text: botMessages[0], user: false }]);
-      setShowInput(true); // Show input after first message is displayed
+      setShowInput(true);
     }, 2000);
 
     return () => {
@@ -36,14 +35,12 @@ export default function Instructions() {
   useEffect(() => {
     if (!submitted) return;
 
-    // Show second message
     setIsTyping(true);
     const timer1 = setTimeout(() => {
       setIsTyping(false);
       setMessages(prev => [...prev, { text: botMessages[1], user: false }]);
     }, 2000);
 
-    // Show third message
     const timer2 = setTimeout(() => {
       setIsTyping(true);
       setTimeout(() => {
@@ -61,7 +58,7 @@ export default function Instructions() {
   const handleNameSubmit = () => {
     if (name.trim()) {
       setSubmitted(true);
-      setShowInput(false); // Hide input after submission
+      setShowInput(false);
       setMessages(prev => [...prev, { text: name, user: true }]);
     }
   };
@@ -71,49 +68,51 @@ export default function Instructions() {
   };
 
   return (
-    <div className="instructions-container">
-      <h2 className="instructions-title">INSTRUCTIONS</h2>
+    <div className="instructions-wrapper">
+      <div className="instructions-container">
+        <h2 className="instructions-title">INSTRUCTIONS</h2>
 
-      <div className="chat-box">
-        {messages.map((msg, index) => (
-          <div key={index} className={`chat-message ${msg.user ? 'user' : 'system'}`}>
-            <div className="chat-bubble" dangerouslySetInnerHTML={{ __html: msg.text }} />
-            <div className="circle"></div>
-          </div>
-        ))}
-
-        {isTyping && (
-          <div className="chat-message system">
-            <div className="typing-indicator">
-              <div className="typing-bubble">
-                <span className="dot"></span>
-                <span className="dot"></span>
-                <span className="dot"></span>
-              </div>
+        <div className="chat-box">
+          {messages.map((msg, index) => (
+            <div key={index} className={`chat-message ${msg.user ? 'user' : 'system'}`}>
+              <div className="chat-bubble" dangerouslySetInnerHTML={{ __html: msg.text }} />
               <div className="circle"></div>
             </div>
-          </div>
-        )}
+          ))}
 
-        {showInput && !submitted && (
-          <div className="chat-input">
-            <input
-              type="text"
-              placeholder="Enter your name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              onKeyPress={handleKeyPress}
-            />
-            <button onClick={handleNameSubmit}>✔</button>
-          </div>
-        )}
+          {isTyping && (
+            <div className="chat-message system">
+              <div className="typing-indicator">
+                <div className="typing-bubble">
+                  <span className="dot"></span>
+                  <span className="dot"></span>
+                  <span className="dot"></span>
+                </div>
+                <div className="circle"></div>
+              </div>
+            </div>
+          )}
 
-        {submitted && !isTyping && (
-          <Link className="start-quiz-btn" to="/survey">
-            Begin Quiz
-          </Link>
-        )}
+          {showInput && !submitted && (
+            <div className="chat-input">
+              <input
+                type="text"
+                placeholder="Enter your name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                onKeyPress={handleKeyPress}
+              />
+              <button onClick={handleNameSubmit}>✔</button>
+            </div>
+          )}
+        </div>
       </div>
+
+      {submitted && !isTyping && (
+        <Link className="start-quiz-btn" to="/survey">
+          Begin Quiz
+        </Link>
+      )}
     </div>
   );
 }
