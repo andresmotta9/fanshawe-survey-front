@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { FaAngleDown } from "react-icons/fa";
 import "./styles.css";
-import { FaAngleDown, FaArrowDown } from "react-icons/fa";
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const controls = useAnimation();
+  const { ref, inView } = useInView({ triggerOnce: true });
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [inView, controls]);
 
   const faqs = [
     {
@@ -29,16 +39,31 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="faq-container">
+    <div className="faq-container" ref={ref}>
       <h2 className="faq-title">FAQ</h2>
       {faqs.map((faq, index) => (
-        <div key={index} className={`faq-item ${openIndex === index ? "open" : ""}`}>
+        <motion.div
+          key={index}
+          className={`faq-item ${openIndex === index ? "open" : ""}`}
+          initial={{ opacity: 0, y: -50, scale: 0.95 }}
+          animate={controls}
+          variants={{
+            visible: { 
+              opacity: 1, 
+              y: 0, 
+              scale: 1,
+              transition: { duration: 0.6, delay: index * 0.2, ease: [0.22, 1, 0.36, 1] } 
+            },
+          }}
+        >
           <button className="faq-question" onClick={() => toggleFAQ(index)}>
             <span className="faq-text">{faq.question}</span>
-            <span className="faq-icon"><FaAngleDown/></span>
+            <span className="faq-icon">
+              <FaAngleDown />
+            </span>
           </button>
-          { openIndex === index ? <div className="faq-answer">{faq.answer}</div> : null}
-        </div>
+          {openIndex === index && <motion.div className="faq-answer">{faq.answer}</motion.div>}
+        </motion.div>
       ))}
     </div>
   );

@@ -4,7 +4,9 @@ const API_ENDPOINTS = {
   USERS: `${API_BASE_URL}/users`, // Fetch all users (admins in this case)
   LOGIN: `${API_BASE_URL}/auth/login`,
   DIPLOMAS: `${API_BASE_URL}/diplomas`,
-  QUESTIONS: `${API_BASE_URL}/fields/questions`,
+  QUESTIONS_FIELDS: `${API_BASE_URL}/fields/questions`,
+  ANSWER_FIELDS: `${API_BASE_URL}/fields/determine`,
+  PROGRAM_RESULTS: `${API_BASE_URL}/fields/questions/program-result`,
   ANSWERS: `${API_BASE_URL}/answers`,
 };
 
