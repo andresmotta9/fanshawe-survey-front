@@ -55,12 +55,26 @@
 .chat-message.system {
   justify-content: flex-start;
 }
-
+.bot-circle {
+  width: 32px;
+  height: 32px;
+  background-color: #C1C1C1;
+  border-radius: 50%;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
 /* User messages on right */
 .chat-message.user {
   justify-content: flex-end;
 }
-
+.user-circle {
+  width: 32px;
+  height: 32px;
+  background-color: #C1C1C1;
+  border-radius: 50%;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
 /* Chat bubbles */
 .chat-bubble {
   padding: 10px;
@@ -150,8 +164,8 @@
 }
 
 .circle {
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   background-color: #bdbdbd;
   border-radius: 50%;
   margin-left: 10px;

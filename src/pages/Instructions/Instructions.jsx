@@ -75,20 +75,21 @@ export default function Instructions() {
         <div className="chat-box">
           {messages.map((msg, index) => (
             <div key={index} className={`chat-message ${msg.user ? 'user' : 'system'}`}>
+              {!msg.user && <div className="bot-circle"></div>}
               <div className="chat-bubble" dangerouslySetInnerHTML={{ __html: msg.text }} />
-              <div className="circle"></div>
+              {msg.user && <div className="user-circle"></div>}
             </div>
           ))}
 
           {isTyping && (
             <div className="chat-message system">
+              <div className="bot-circle"></div>
               <div className="typing-indicator">
                 <div className="typing-bubble">
                   <span className="dot"></span>
                   <span className="dot"></span>
                   <span className="dot"></span>
                 </div>
-                <div className="circle"></div>
               </div>
             </div>
           )}
