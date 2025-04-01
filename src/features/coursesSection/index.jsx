@@ -28,7 +28,7 @@ export default function CoursesSection() {
           ))}
       </div>
       <div className="coursesSectionContent">
-        <div className="TextHeading">COURSES AVAILABLE</div>
+        <div className="TextHeading">PROGRAMS AVAILABLE</div>
         <CoursesAvailable
           activeCard={activeCard}
           setActiveCard={setActiveCard}
