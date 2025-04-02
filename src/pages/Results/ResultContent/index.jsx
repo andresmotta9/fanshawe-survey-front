@@ -3,7 +3,7 @@ import CourseDetails from "../../../features/coursesSection/courseFullDetails/co
 import "./styles.css";
 import { motion } from "framer-motion";
 
-export default function ResultContent({ isFullyOpened }) {
+export default function ResultContent({ isFullyOpened, finalCourseResult }) {
   const [showExtraContent, setShowExtraContent] = useState(false);
 
   useEffect(() => {
@@ -21,11 +21,11 @@ export default function ResultContent({ isFullyOpened }) {
   return (
     <motion.div className="resultContent">
       <div>
-        <CourseDetails activeCard={1} />
+        <CourseDetails course={finalCourseResult} />
       </div>
       {showExtraContent && (
         <div>
-          <CourseDetails activeCard={1} />
+          <CourseDetails course={1} />
         </div>
       )}
     </motion.div>

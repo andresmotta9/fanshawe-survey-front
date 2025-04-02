@@ -4,13 +4,19 @@ import { useMediaQuery } from "react-responsive";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import courseInfo from "../../data/courseInfo";
-
 import CoursesAvailable from "./courseCardContainer";
 import CourseDetails from "./courseFullDetails/courseDetails";
+import useFetch from "../../hooks/useFetch";
 
 export default function CoursesSection() {
   let [activeCard, setActiveCard] = useState(null);
   const isDesktop = useMediaQuery({ minWidth: 750 });
+
+  const {
+    data: courses,
+    loading: coursesLoading,
+    error: coursesErr,
+  } = useFetch("http://localhost:3000/api/courses" );
 
   return (
     <motion.div
@@ -29,13 +35,14 @@ export default function CoursesSection() {
       </div>
       <div className="coursesSectionContent">
         <div className="TextHeading">PROGRAMS AVAILABLE</div>
-        <CoursesAvailable
+        {courses &&<CoursesAvailable
           activeCard={activeCard}
           setActiveCard={setActiveCard}
-        />
-        {activeCard !== null ? (
+          courses={courses}
+        />}
+        {activeCard !== null  ? (
           <div className="courseDetailContain">
-            <CourseDetails activeCard={activeCard} />
+            <CourseDetails course={courses[activeCard]} />
           </div>
         ) : null}
       </div>

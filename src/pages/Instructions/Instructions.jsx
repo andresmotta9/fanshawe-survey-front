@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './instructions.css';
-import PrimaryQuizButton from '../../components/primaryQuizButton';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./instructions.css";
+import PrimaryQuizButton from "../../components/primaryQuizButton";
 import avatar1 from "./avatarImages/avatar1.png"; // Bot avatar
 import avatar2 from "./avatarImages/avatar2.png"; // User avatar
+import { FaCheck } from "react-icons/fa";
 
 export default function Instructions() {
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
@@ -16,7 +17,7 @@ export default function Instructions() {
   const botMessages = [
     "Hey👋 what's your name?",
     `Nice to meet you <strong>${name}</strong> 😊, just want you to know how important your answers are, so we'd like you to be sincere and make the answers you pick represent you as much as possible.`,
-    "Alright, let's begin 🔥"
+    "Alright, let's begin 🔥",
   ];
 
   useEffect(() => {
@@ -39,14 +40,14 @@ export default function Instructions() {
     setIsTyping(true);
     const timer1 = setTimeout(() => {
       setIsTyping(false);
-      setMessages(prev => [...prev, { text: botMessages[1], user: false }]);
+      setMessages((prev) => [...prev, { text: botMessages[1], user: false }]);
     }, 2000);
 
     const timer2 = setTimeout(() => {
       setIsTyping(true);
       setTimeout(() => {
         setIsTyping(false);
-        setMessages(prev => [...prev, { text: botMessages[2], user: false }]);
+        setMessages((prev) => [...prev, { text: botMessages[2], user: false }]);
       }, 2000);
     }, 2000);
 
@@ -60,34 +61,41 @@ export default function Instructions() {
     if (name.trim()) {
       setSubmitted(true);
       setShowInput(false);
-      setMessages(prev => [...prev, { text: name, user: true }]);
+      setMessages((prev) => [...prev, { text: name, user: true }]);
     }
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') handleNameSubmit();
+    if (e.key === "Enter") handleNameSubmit();
   };
 
   const handleStartQuiz = () => {
-    navigate('/survey');
+    navigate("/survey");
   };
 
   return (
     <div className="instructions-wrapper">
-      <div className="instructions-title-container"> <h2 className="instructions-title">INSTRUCTIONS</h2></div>
+      <div className="instructions-title-container">
+        {" "}
+        <h2 className="instructions-title">INSTRUCTIONS</h2>
+      </div>
 
       <div className="instructions-container">
-       
-        
         <div className="chat-box">
           {messages.map((msg, index) => (
-            <div key={index} className={`chat-message ${msg.user ? 'user' : 'system'}`}>
+            <div
+              key={index}
+              className={`chat-message ${msg.user ? "user" : "system"}`}
+            >
               {!msg.user ? (
                 <img src={avatar1} alt="Bot Avatar" className="avatar-img" />
               ) : (
                 <img src={avatar2} alt="User Avatar" className="avatar-img" />
               )}
-              <div className="chat-bubble" dangerouslySetInnerHTML={{ __html: msg.text }} />
+              <div
+                className="chat-bubble"
+                dangerouslySetInnerHTML={{ __html: msg.text }}
+              />
             </div>
           ))}
 
@@ -113,7 +121,12 @@ export default function Instructions() {
                 onChange={(e) => setName(e.target.value)}
                 onKeyPress={handleKeyPress}
               />
-              <button onClick={handleNameSubmit}>✔</button>
+              <button
+                onClick={handleNameSubmit}
+                style={{ boxShadow: "0px 2px 0px rgba(0, 0, 0, 0.5)" }}
+              >
+                <FaCheck color="white" />
+              </button>
             </div>
           )}
         </div>

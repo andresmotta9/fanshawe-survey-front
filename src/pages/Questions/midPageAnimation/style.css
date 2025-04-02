@@ -1,0 +1,40 @@
+.midPageContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: url(../../../assets/stripesbackground.png);
+  background-size: cover;
+  color: white;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+.midPageContainer h1 {
+  font-family: "puffin-display-soft", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 45px;
+  text-align: center;
+  margin-top: 50px;
+}
+.lottieContainer{
+    margin: auto;
+    height: 400px;
+    width: 400px;
+}
+.lottieDescription{
+    font-family: "puffin-display-soft", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 32px;
+    width: 65%;
+    text-align: center;
+    margin: auto;
+}
+.btnContainer{
+    display: flex;
+    justify-content: center;
+}

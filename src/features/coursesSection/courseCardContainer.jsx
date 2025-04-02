@@ -1,18 +1,17 @@
 import CourseCards from "../../components/courseCard";
-import courseInfo from "../../data/courseInfo";
 import "./styles.css";
 
-export default function CoursesAvailable({ activeCard, setActiveCard }) {
+export default function CoursesAvailable({ courses, activeCard, setActiveCard }) {
   function handleCardClick(index) {
     setActiveCard(activeCard === index ? null : index);
   }
 
   return (
     <div className="courseCardContainer">
-      {courseInfo.map((course, i) => (
+      {courses.map((course, i) => (
         <CourseCards
           key={i}
-          courseTitle={course.title}
+          courseTitle={course.program_code}
           courseName={course.name}
           cardButtonClicked={activeCard === i}
           onClick={() => handleCardClick(i)}
