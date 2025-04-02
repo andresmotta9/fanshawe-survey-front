@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './instructions.css';
-import { Link } from 'react-router-dom';
+import PrimaryQuizButton from '../../components/primaryQuizButton';
+import avatar1 from "./avatarImages/avatar1.png"; // Bot avatar
+import avatar2 from "./avatarImages/avatar2.png"; // User avatar
 
 export default function Instructions() {
   const [name, setName] = useState('');
@@ -8,6 +11,7 @@ export default function Instructions() {
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
   const [showInput, setShowInput] = useState(false);
+  const navigate = useNavigate();
 
   const botMessages = [
     "Hey👋 what's your name?",
@@ -16,10 +20,7 @@ export default function Instructions() {
   ];
 
   useEffect(() => {
-    const timer1 = setTimeout(() => {
-      setIsTyping(true);
-    }, 500);
-
+    const timer1 = setTimeout(() => setIsTyping(true), 500);
     const timer2 = setTimeout(() => {
       setIsTyping(false);
       setMessages([{ text: botMessages[0], user: false }]);
@@ -67,23 +68,32 @@ export default function Instructions() {
     if (e.key === 'Enter') handleNameSubmit();
   };
 
+  const handleStartQuiz = () => {
+    navigate('/survey');
+  };
+
   return (
     <div className="instructions-wrapper">
-      <div className="instructions-container">
-        <h2 className="instructions-title">INSTRUCTIONS</h2>
+      <div className="instructions-container"> <h2 className="instructions-title">INSTRUCTIONS</h2></div>
 
+      <div className="instructions-container">
+       
+        
         <div className="chat-box">
           {messages.map((msg, index) => (
             <div key={index} className={`chat-message ${msg.user ? 'user' : 'system'}`}>
-              {!msg.user && <div className="bot-circle"></div>}
+              {!msg.user ? (
+                <img src={avatar1} alt="Bot Avatar" className="avatar-img" />
+              ) : (
+                <img src={avatar2} alt="User Avatar" className="avatar-img" />
+              )}
               <div className="chat-bubble" dangerouslySetInnerHTML={{ __html: msg.text }} />
-              {msg.user && <div className="user-circle"></div>}
             </div>
           ))}
 
           {isTyping && (
             <div className="chat-message system">
-              <div className="bot-circle"></div>
+              <img src={avatar1} alt="Bot Avatar" className="avatar-img" />
               <div className="typing-indicator">
                 <div className="typing-bubble">
                   <span className="dot"></span>
@@ -110,9 +120,7 @@ export default function Instructions() {
       </div>
 
       {submitted && !isTyping && (
-        <Link className="start-quiz-btn" to="/survey">
-          Begin Quiz
-        </Link>
+        <PrimaryQuizButton name="Begin Quiz" onClick={handleStartQuiz} />
       )}
     </div>
   );
