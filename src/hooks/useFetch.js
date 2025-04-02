@@ -15,21 +15,26 @@ const useFetch = (endpoint, dataObj) => {
       };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(endpoint, options);
-        if (!response.ok) throw new Error(`Error: ${response.statusText}`);
-
-        const result = await response.json();
-        setData(result);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+    if (endpoint) {
+      const fetchData = async () => {
+        try {
+          const response = await fetch(endpoint, options);
+          if (!response.ok) throw new Error(`Error: ${response.statusText}`);
+  
+          const result = await response.json();
+          setData(result);
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchData();
+      console.log(dataObj)
+    }
+    
+    
   }, [endpoint]);
 
   return { data, loading, error };

@@ -15,15 +15,48 @@ export default function Survey() {
   const [noSelection, setNoSelection] = useState(false);
   const navigate = useNavigate();
   const [answers, setAnswers] = useState([]);
-  const [fetchTrigger, setFetchTrigger]= useState(false)
+  const [fetchTrigger, setFetchTrigger] = useState(null);
+  const [questions,setQuestions]  = useState([])
+
+  const { data, loading, error } = useFetch(API_ENDPOINTS.QUESTIONS_FIELDS);
+  const {
+    data: winnerFieldInfo,
+    loading: winnerFieldLoading,
+    error: winnerFieldErr,
+  } = useFetch(fetchTrigger, { answers: answers });
+  console.log(winnerFieldInfo);
+
+  useEffect(()=>{
+    if (winnerFieldInfo) {
+        setQuestions((prevQuestions)=>{
+          return[...prevQuestions,...winnerFieldInfo.data.nextQuestions]
+        });
+        "hey"
+        
+      }
+      console.log(questions)
+  },[winnerFieldInfo])
+
+  useEffect(() => {
+    if (data) {
+      setQuestions(data);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    console.log("Updated questions:", questions);
+  }, [questions]);
 
   const handleNextQuestion = () => {
+    console.log(answers)
     if (selectedOptionIndex === null) {
       setNoSelection(true);
       return;
     }
-    if (selectedOptionIndex === 5) {
-      setFetchTrigger(true)
+    if (questionIndex === 5) {
+      console.log("clicked")
+      setFetchTrigger(API_ENDPOINTS.ANSWER_FIELDS);
+      
     }
     if (questionIndex < questions.length - 1) {
       setNoSelection(false);
@@ -31,12 +64,9 @@ export default function Survey() {
       setQuestionIndex(questionIndex + 1);
       setSelectedOptionIndex(null);
     } else {
-      setQuizFinished(true);
-      console.log(answers)
+      console.log(answers);
     }
   };
-
-  
 
   const handlePreviousQuestion = () => {
     if (questionIndex > 0) {
@@ -48,14 +78,16 @@ export default function Survey() {
   const handleSelectedOption = (index) => {
     setSelectedOptionIndex(index);
     setAnswers((prevAnswers) => {
-      const fieldIdContain = questions[questionIndex].options.find((ans) => ans.option_id === index)
+      const fieldIdContain = questions[questionIndex].options.find(
+        (ans) => ans.optionId === index
+      );
       const newAnswer = {
-        question_id: questions[questionIndex].question_id,
-        field_id: fieldIdContain ? fieldIdContain.field_id : null,
+        questionId: questions[questionIndex].questionId,
+        fieldId: fieldIdContain ? fieldIdContain.fieldId : null,
       };
 
       const updatedAnswer = prevAnswers.filter(
-        (ans) => ans.question_id !== newAnswer.question_id
+        (ans) => ans.questionID !== newAnswer.questionId
       );
       return [...updatedAnswer, newAnswer];
     });
@@ -66,20 +98,11 @@ export default function Survey() {
   };
 
   
-
-  const { data, loading, error } = useFetch(API_ENDPOINTS.QUESTIONS_FIELDS);
-  const {
-    data: winnerFieldInfo,
-    loading: winnerFieldLoading,
-    error: winnerFieldErr,
-  } = useFetch(API_ENDPOINTS.ANSWER_FIELDS, answers);
-  console.log(winnerFieldInfo,winnerFieldErr)
-
-  const questions = data ? data : [];
+  
 
   return (
     <>
-      {questions.length > 0 && (
+      {questions ? (
         <motion.div
           className="QuizContainer"
           animate={{
@@ -134,20 +157,21 @@ export default function Survey() {
             Question {questionIndex + 1}/{questions.length}
           </div>
           <div className="questionContainer">
-            {questions[questionIndex].question}
+          {questions.length > 0 ? questions[questionIndex].question : "Loading question..."}
+
           </div>
           <div className="questionOptions">
-            {questions[questionIndex].options.map((options, index) => (
+            { questions.length > 0 ? questions[questionIndex].options.map((options, index) => (
               <Option
                 key={index}
                 optionIndex={String.fromCharCode(
-                  64 + ((parseFloat(options.option_id) - 1) % 5) + 1
+                  64 + ((parseFloat(options.optionId) - 1) % 5) + 1
                 )}
-                active={selectedOptionIndex === options.option_id}
+                active={selectedOptionIndex === options.optionId}
                 optionText={options.text}
-                onClick={() => handleSelectedOption(options.option_id)}
+                onClick={() => handleSelectedOption(options.optionId)}
               />
-            ))}
+            )) : "loading questions"}
           </div>
 
           <div className="nextButton">
@@ -158,7 +182,7 @@ export default function Survey() {
             />
           </div>
         </motion.div>
-      )}
+      ):"loading questions" }
 
       {quizFinished && <Congratulations onClick={handleNavigateToResults} />}
     </>
