@@ -52,7 +52,7 @@
     box-shadow: 0px 6px 0px 0px rgba(0, 0, 0, 1);
     border: 2px solid black;
     font-family: "Inter",sans-serif;
-    width: 100%;
+    width: 345px;
     background-color: #BC3D3D;
   }
   .startQuizButton:hover{
