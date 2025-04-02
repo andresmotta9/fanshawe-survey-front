@@ -74,7 +74,7 @@ export default function Instructions() {
 
   return (
     <div className="instructions-wrapper">
-      <div className="instructions-container"> <h2 className="instructions-title">INSTRUCTIONS</h2></div>
+      <div className="instructions-title-container"> <h2 className="instructions-title">INSTRUCTIONS</h2></div>
 
       <div className="instructions-container">
        

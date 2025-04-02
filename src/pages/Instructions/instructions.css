@@ -1,5 +1,5 @@
 /* Mobile-First Styles */
-/* Add this new wrapper style */
+
 .instructions-wrapper {
   position: relative;
   width: 100%;
@@ -25,10 +25,25 @@
   transform: none;
 }
 
-
+.instructions-title-container{
+  width: 90%;
+  max-width: 860px;
+  margin: 20px auto;
+  margin-bottom: -14px;
+  background-color: #E4F8FF;
+  padding: 3px;
+  border-radius: 15px;
+  border: 2px solid #ccc;
+  text-align: center;
+  /* Remove absolute positioning */
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+}
 .instructions-title {
   background-color: #B2EBFF;
-  padding: 10px;
+  padding: 15px;
   font-size: 1.9rem;
   font-family: "puffin-display-soft", sans-serif;
   font-weight: bold;
@@ -101,6 +116,7 @@
   max-width: 75%;
   text-align: left;
   font-size: 1rem;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 1);
 }
 
 /* System bubble styling */
@@ -135,7 +151,7 @@
   border-top-left-radius: 0; /* Sharp edge on left side */
 }
 
-/* Dot animation styles (unchanged) */
+
 .dot {
   display: inline-block;
   width: 8px;
@@ -200,7 +216,7 @@
   border-radius: 15px;
   cursor: pointer;
   width: auto;
-  display: block; /* Make it a block element for margin: auto to work */
+  display: block; 
   text-align: center;
   transition: background-color 0.3s;
 }
@@ -215,6 +231,9 @@
   .instructions-container {
     width: 80%;
   }
+  .instructions-title-container {
+    width: 80%;
+  }
   .start-quiz-btn {
     width: auto;
   }
@@ -222,6 +241,9 @@
 
 @media (min-width: 900px) {
   .instructions-container {
+    width: 600px;
+  }
+  .instructions-title-container {
     width: 600px;
   }
 }
