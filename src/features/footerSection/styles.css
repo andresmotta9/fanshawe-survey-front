@@ -21,7 +21,7 @@
   }
   
   .logo-text {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
     display: block;
   }
@@ -32,21 +32,7 @@
     margin-top: 10px;
     justify-content: start;
   }
-  
-  .circle {
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background 0.3s ease;
-  }
-  
-  .circle:hover {
-    background-color: #ffcccb;
-  }
-  
-  /* Contact & Subscribe */
+    /* Contact & Subscribe */
   .footer-contact,
   .footer-subscribe {
     max-width: 400px;
@@ -115,6 +101,77 @@
     max-width: 1200px;
     margin: 50px auto 0px auto;
   }
+  /* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.4);
+}
+
+.social-icon img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+/* Remove or update the old circle styles if they exist */
+.circle {
+  display: none; /* Hide the old circles */
+}
+  /* Subscribe Popup Styles */
+.subscribe-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #a42d2d;
+  color: white;
+  font-family: "puffin-display-soft", sans-serif;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+.popup-content {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  30% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  85% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+}
   
   /* Responsive */
   @media (max-width: 768px) {

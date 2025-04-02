@@ -1,18 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
+import FacebookLogo from "./logos/Facebook_logo.png";
+import InstagramLogo from "./logos/Instagram_logo.png";
+import TwitterLogo from "./logos/Twitter_logo.png";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email) {
+      setShowPopup(true);
+      setEmail("");
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 3000);
+    }
+  };
+
   return (
     <footer className="footer">
+      {showPopup && (
+        <div className="subscribe-popup">
+          <div className="popup-content">
+            <p>Your email is subscribed to us! Yayy 🎉</p>
+          </div>
+        </div>
+      )}
+
       <div className="footer-container">
-        {/* Logo & Socials */}
         <div className="footer-logo">
           <span
             className="logo-text"
             onClick={() => {
-              window.scrollTo({ top: 0, left: 0, behavior: "smooth" }); // Scroll to top
+              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
               setTimeout(() => {
-                window.location.reload(); // Refresh after ensuring scroll
+                window.location.reload();
               }, 700);
             }}
             style={{ cursor: "pointer" }}
@@ -21,42 +45,49 @@ const Footer = () => {
           </span>
 
           <div className="social-icons">
-            <a href="#" className="circle"></a>
-            <a href="#" className="circle"></a>
-            <a href="#" className="circle"></a>
+            <a href="#" className="social-icon">
+              <img src={FacebookLogo} alt="Facebook" />
+            </a>
+            <a href="#" className="social-icon">
+              <img src={InstagramLogo} alt="Instagram" />
+            </a>
+            <a href="#" className="social-icon">
+              <img src={TwitterLogo} alt="Twitter" />
+            </a>
           </div>
         </div>
 
-        {/* Contact Section */}
         <div className="footer-contact">
           <h4>CONTACT US</h4>
           <p>
             <a href="mailto:fansurveys25@gmail.com">fansurvey25@gmail.com</a>
           </p>
           <p>
-            Providing IT program recommendations based on your skills &
-            interests.
+            Providing IT program recommendations based on your skills & interests.
           </p>
           <p>
             <a href="tel:+12268833114">+1 (226)-883-3114</a>
           </p>
         </div>
 
-        {/* Subscribe Section */}
         <div className="footer-subscribe">
           <h4>SUBSCRIBE</h4>
           <p>
-            Enter your email to get updates on Fanshawe IT courses and
-            recommendations
+            Enter your email to get updates on Fanshawe IT courses and recommendations
           </p>
-          <form>
-            <input type="email" placeholder="example@gmail.com" />
+          <form onSubmit={handleSubmit}>
+            <input 
+              type="email" 
+              placeholder="example@gmail.com" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
             <button type="submit">Subscribe</button>
           </form>
         </div>
       </div>
 
-      {/* Copyright */}
       <div className="footer-bottom">
         <p>
           © 2025 <span>FanSurvey</span>. All rights reserved.

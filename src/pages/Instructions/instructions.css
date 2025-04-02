@@ -7,7 +7,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden; /* Prevent scrollbars during animation */
 }
+
 .instructions-container {
   width: 90%;
   max-width: 860px;
@@ -18,14 +20,15 @@
   border: 2px solid #ccc;
   text-align: center;
   font-family: Arial, sans-serif;
-  /* Remove absolute positioning */
   position: relative;
-  top: auto;
-  left: auto;
-  transform: none;
+  /* Animation properties */
+  transform: translateY(100vh);
+  animation: slideUp 0.6s ease-out forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
 }
 
-.instructions-title-container{
+.instructions-title-container {
   width: 90%;
   max-width: 860px;
   margin: 20px auto;
@@ -35,12 +38,35 @@
   border-radius: 15px;
   border: 2px solid #ccc;
   text-align: center;
-  /* Remove absolute positioning */
   position: relative;
-  top: auto;
-  left: auto;
-  transform: none;
+  /* Animation properties */
+  transform: translateY(-100vh);
+  animation: slideDown 0.8s ease-out forwards;
+  opacity: 0;
 }
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .instructions-title {
   background-color: #B2EBFF;
   padding: 15px;
