@@ -1,7 +1,21 @@
 import "./styles.css";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export default function ResultEnvelope({ isFullyOpened,isOpened, onClick, children }) {
+  useEffect(() => {
+      if (isFullyOpened) {
+        const timer = setTimeout(() => {
+          setShowExtraContent(true);
+        }, 2000);
+  
+        return () => clearTimeout(timer); // Cleanup to prevent memory leaks
+      } else {
+        setShowExtraContent(false);
+      }
+    }, [isFullyOpened]);
+
+  const [showExtraContent, setShowExtraContent] = useState(false);
   return (
     <motion.div className={isOpened ? "openedEnvelope" : "envelope"}
       layoutId="animatedBox"
@@ -35,14 +49,14 @@ export default function ResultEnvelope({ isFullyOpened,isOpened, onClick, childr
           transition: { duration: 2 },
         }}
       ></motion.div>
-      <motion.div
+      {!showExtraContent && <motion.div
         className="bottomSide"
         style={{ zIndex: isOpened ? 2 : 2 }}
         animate={{
           rotateX: isFullyOpened ? 180 : 0,
           transition: { duration: 2 },
         }}
-      ></motion.div>
+      ></motion.div>}
       <motion.div
         className="topSide"
         animate={{

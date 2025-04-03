@@ -58,54 +58,6 @@ export default function Survey() {
   }, [data]);
 
 
-  // Add beforeunload event listener to clear storage on refresh
-  useEffect(() => {
-    const handleBeforeUnload = () => {
-      localStorage.removeItem('surveyAnswers');
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, []);
-
-  // Load saved answers from localStorage on component mount
-  useEffect(() => {
-    const savedAnswers = localStorage.getItem('surveyAnswers');
-    if (savedAnswers) {
-      try {
-        const parsedAnswers = JSON.parse(savedAnswers);
-        // Only use saved answers if quiz isn't finished
-        if (!quizFinished) {
-          setAnswers(parsedAnswers);
-        } else {
-          localStorage.removeItem('surveyAnswers');
-        }
-      } catch (e) {
-        localStorage.removeItem('surveyAnswers');
-      }
-    }
-  }, [quizFinished]);
-
-  // Save answers to localStorage whenever they change
-  useEffect(() => {
-    if (answers.length > 0 && !quizFinished) {
-      localStorage.setItem('surveyAnswers', JSON.stringify(answers));
-    }
-  }, [answers, quizFinished]);
-
-  // Updated to properly track selected options
-  useEffect(() => {
-    if (questions.length > 0) {
-      const currentAnswer = answers.find(
-        (answer) => answer.questionId === questions[questionIndex].questionId
-      );
-      setSelectedOptionIndex(currentAnswer ? currentAnswer.optionId : null);
-    }
-  }, [questionIndex, questions, answers]);
-
   const handleNextQuestion = () => {
     if (selectedOptionIndex === null) {
       setNoSelection(true);
@@ -121,7 +73,9 @@ export default function Survey() {
     
     if (questionIndex < 23) {
       setNoSelection(false);
+
       setQuestionIndex(questionIndex + 1);
+      setSelectedOptionIndex(null);
     } else {
       setQuizFinished(true)
       setfinalResultTrigger(API_ENDPOINTS.PROGRAM_RESULTS);
@@ -131,23 +85,11 @@ export default function Survey() {
   const handlePreviousQuestion = () => {
     if (questionIndex > 0) {
       setQuestionIndex(questionIndex - 1);
+      setSelectedOptionIndex(null);
     }
   };
 
-  // Updated to properly store answers and handle deselection
   const handleSelectedOption = (index) => {
-    // If clicking the already selected option, deselect it
-    if (selectedOptionIndex === index) {
-      setSelectedOptionIndex(null);
-      setAnswers((prevAnswers) => {
-        return prevAnswers.filter(
-          (ans) => ans.questionId !== questions[questionIndex].questionId
-        );
-      });
-      return;
-    }
-
-    // Otherwise, select the new option
     setSelectedOptionIndex(index);
     setAnswers((prevAnswers) => {
       const fieldIdContain = questions[questionIndex].options.find(
@@ -155,13 +97,11 @@ export default function Survey() {
       );
       const newAnswer = {
         questionId: questions[questionIndex].questionId,
-        optionId: index,
         fieldId: fieldIdContain ? fieldIdContain.fieldId : null,
       };
 
-      // Remove any existing answer for this question
       const updatedAnswer = prevAnswers.filter(
-        (ans) => ans.questionId !== newAnswer.questionId
+        (ans) => ans.questionID !== newAnswer.questionId
       );
       return [...updatedAnswer, newAnswer];
     });
@@ -185,7 +125,7 @@ export default function Survey() {
   };
 
   const handleNavigateToResults = () => {
-    navigate("/results", { state: { answers } });
+    navigate("/results",{state: { winner: winnerProgramInfo }});
   };
 
   return (

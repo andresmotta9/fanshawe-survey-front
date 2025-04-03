@@ -3,6 +3,7 @@ import "./styles.css";
 import FacebookLogo from "./logos/Facebook_logo.png";
 import InstagramLogo from "./logos/Instagram_logo.png";
 import TwitterLogo from "./logos/Twitter_logo.png";
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -46,13 +47,13 @@ const Footer = () => {
 
           <div className="social-icons">
             <a href="#" className="social-icon">
-              <img src={FacebookLogo} alt="Facebook" />
+              <FaFacebook fontSize={30}/>
             </a>
             <a href="#" className="social-icon">
-              <img src={InstagramLogo} alt="Instagram" />
+              <FaInstagram fontSize={30}/>
             </a>
             <a href="#" className="social-icon">
-              <img src={TwitterLogo} alt="Twitter" />
+              <FaTwitter fontSize={30}/>
             </a>
           </div>
         </div>

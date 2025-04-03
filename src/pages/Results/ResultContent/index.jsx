@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 export default function ResultContent({ isFullyOpened, finalCourseResult }) {
   const [showExtraContent, setShowExtraContent] = useState(false);
+  console.log(finalCourseResult.data);
 
   useEffect(() => {
     if (isFullyOpened) {
@@ -21,11 +22,11 @@ export default function ResultContent({ isFullyOpened, finalCourseResult }) {
   return (
     <motion.div className="resultContent">
       <div>
-        <CourseDetails course={finalCourseResult} />
+        <CourseDetails course={finalCourseResult.data} />
       </div>
       {showExtraContent && (
         <div>
-          <CourseDetails course={1} />
+          <CourseDetails course={finalCourseResult.data} />
         </div>
       )}
     </motion.div>

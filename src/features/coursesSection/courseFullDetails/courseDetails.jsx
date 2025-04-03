@@ -12,15 +12,15 @@ export default function CourseDetails({ course }) {
       transition={{ duration: 0.5 }}
     >
       <motion.div className="heading" onChange={() => console.log("changed")}>
-        <div className="courseFullDetailsTitle">{course.program_code}</div>
-        <div className="courseFullDetailsName">{course.name}</div>
+        <div className="courseFullDetailsTitle">{course.programCode}</div>
+        <div className="courseFullDetailsName">{course.programName}</div>
       </motion.div>
       <div className="courseFullDetailsDescription">{course.description}</div>
       <div>
         <h4>Top Skills</h4>
-        {(course.top_skills.length > 5
-          ? course.top_skills.slice(0, 5)
-          : course.top_skills
+        {(course.topSkills.length > 5
+          ? course.topSkills.slice(0, 5)
+          : course.topSkills
         ).map((skill, i) => (
           <div className="topSkills" key={i}>
             {skill}
